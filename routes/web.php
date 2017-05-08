@@ -32,6 +32,7 @@ Route::get('/find',function(){
     $posts= Post::orderBy('name','desc')->take(10)->get();
     foreach($posts as $post){
         echo  $post->name.'<br />';
+
     }
 
 });
