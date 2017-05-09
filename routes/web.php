@@ -23,6 +23,8 @@ Route::resource('posts','PostsController');
 
 Route::get('contact','PostsController@contact');
 
+Route::resource('admin/users','AdminUsersController');
+
 
 /*
 ELOQUENT - ORM
@@ -46,7 +48,5 @@ Route::get('/basicinsert',function(){
 
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
