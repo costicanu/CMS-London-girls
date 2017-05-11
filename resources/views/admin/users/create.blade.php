@@ -1,4 +1,4 @@
-<form method="get" action="{{action('AdminUsersController@store')}}" accept-charset="UTF-8">
+<form method="post" action="{{action('AdminUsersController@store')}}" accept-charset="UTF-8">
     {!! csrf_field() !!}
     <input type="text" name="name" value="{{ old('name') }}" />
 

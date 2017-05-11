@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Http\Middleware\isAdmin;
+use App\User;
 
 class PostsController extends Controller
 {
@@ -46,7 +47,9 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-
+        $user= new User;
+        $user->name='test';
+        $user->save();
     }
 
     /**

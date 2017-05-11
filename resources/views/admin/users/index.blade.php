@@ -22,8 +22,8 @@
                     <td>{{$user->id}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->name}}</td>
-                    <td>{{$user->created_at->diffForHumans()}}</td>
-                    <td>{{$user->updated_at->diffForHumans()}}</td>
+                    <td>{{$user->created_at?$user->created_at->diffForHumans():''}}</td>
+                    <td>{{$user->updated_at?$user->updated_at->diffForHumans():''}}</td>
                     <td>{{$user->role->name}}</td>
                     <td>
                         {{$user->is_active==1?'Activated':'Deactivated'}}
