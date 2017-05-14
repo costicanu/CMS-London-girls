@@ -17,8 +17,8 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-        $users=User::all();
-        return view('admin.users.index',['users'=>$users]);
+        $users = User::all();
+        return view('admin.users.index', ['users' => $users]);
     }
 
     /**
@@ -28,24 +28,32 @@ class AdminUsersController extends Controller
      */
     public function create()
     {
-        $roles=Role::pluck('id','name')->all();
-        return view('admin.users.create',['roles'=>$roles]);
+        $roles = Role::pluck("name", "id")->all();
+        return view('admin.users.create', ['roles' => $roles]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $user= new User;
-        $user->name='test';
-        $user->role_id=2;
+        $this->validate($request, [
+            'name' => "required|string|max:255|unique:users",
+            'email' => "required|string|email|max:255|unique:users",
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role_id = $request->role_id;
+        $user->is_active = $request->is_active ? 1 : 0;
+        $user->password = bcrypt($request->password);
         $user->save();
         #return view('admin.users.index');
-        redirect($this->index());
+        return redirect()->route('users.index')->with('message', 'Adaugat cu succes!');
 
         //
     }
@@ -53,7 +61,7 @@ class AdminUsersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -64,30 +72,50 @@ class AdminUsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        return view('admin/users/edit');
+        $user = User::where('id', $id)->first();
+        $roles = Role::pluck('name', 'id')->all();
+        return view('admin.users.edit', ['user' => $user, 'roles' => $roles]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $this->validate($request, [
+            'name' => "required|string|max:255|unique:users,name," . $id,
+            'email' => "required|string|email|max:255|unique:users,email," . $id,
+            # 'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        if (!empty($request->password)) {
+            $this->validate($request, [
+                'password' => 'required|string|min:6|confirmed',
+            ]);
+        }
+
+        $user = User::findOrFail($id);
+        $user->is_active = is_null($request->is_active) ? 0 : 1;
+        $user->update($request->all());
+
+
+        return redirect()->route('users.index')->with('message', 'Successfully edited!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

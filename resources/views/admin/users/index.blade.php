@@ -2,7 +2,18 @@
 
 @section('content')
 
-    <table class="table">
+
+    @if(Session::get('message'))
+        <div class="alert alert-success">
+            <strong>Success!</strong> {{ Session::get('message') }}
+        </div>
+    @endif
+
+    <div class="row" id="new-record">
+        <a class="btn btn-success" href="{{ action('AdminUsersController@create') }}">Create new user</a>
+    </div>
+
+    <table class="table table-hover">
         <thead>
         <tr>
             <th>Id</th>
@@ -12,6 +23,8 @@
             <th>Updated At</th>
             <th>Role</th>
             <th>Active</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -28,6 +41,15 @@
                     <td>
                         {{$user->is_active==1?'Activated':'Deactivated'}}
                     </td>
+                    <td>
+                        <a href="{{ action('AdminUsersController@edit',['id'=>$user->id]) }}"
+                           class="btn btn-info">Edit</a>
+                    </td>
+                    <td>
+                        <a href="{{ action('AdminUsersController@destroy',['id'=>$user->id]) }}" class="btn btn-danger"
+                           onclick="return ConfirmDelete('{{$user->name}}');">Delete</a>
+                    </td>
+
                 </tr>
 
             @endforeach
@@ -37,5 +59,20 @@
     </table>
 
 
+    <script type="text/javascript">
+
+        function ConfirmDelete(name) {
+            var x = confirm('Are you sure you want to delete ' + name + '?');
+            if (x)
+                return true;
+            else
+                return false;
+        }
+
+    </script>
+
 @stop
+
+
+
 

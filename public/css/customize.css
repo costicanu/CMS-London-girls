@@ -23,6 +23,10 @@ footer {
     padding: 15px;
 }
 
+.table-hover tbody tr:hover > th {
+    background-color: #D1D119;
+}
+
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {
     .sidenav {
