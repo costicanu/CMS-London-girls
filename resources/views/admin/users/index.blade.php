@@ -13,7 +13,7 @@
         <a class="btn btn-success" href="{{ action('AdminUsersController@create') }}">Create new user</a>
     </div>
 
-    <table class="table table-hover">
+    <table class="table table-hover table-striped">
         <thead>
         <tr>
             <th>Id</th>
@@ -46,8 +46,12 @@
                            class="btn btn-info">Edit</a>
                     </td>
                     <td>
-                        <a href="{{ action('AdminUsersController@destroy',['id'=>$user->id]) }}" class="btn btn-danger"
-                           onclick="return ConfirmDelete('{{$user->name}}');">Delete</a>
+
+                        <form method="POST" action="{{ action('AdminUsersController@destroy',['id'=>$user->id]) }}" onsubmit="return ConfirmDelete('{{$user->name}}');">
+                            {!! csrf_field() !!}
+                        <input type="hidden" name="_method" value="DELETE" />
+                        <input type="submit" class="btn btn-danger"  name="submit" value="Delete" />
+                        </form>
                     </td>
 
                 </tr>
@@ -58,6 +62,7 @@
         </tbody>
     </table>
 
+    {{ $users->links() }}
 
     <script type="text/javascript">
 

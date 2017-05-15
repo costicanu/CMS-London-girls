@@ -24,7 +24,11 @@ footer {
 }
 
 .table-hover tbody tr:hover > th {
-    background-color: #D1D119;
+     background-color: red;
+ }
+
+.top10{
+    padding-top:10px!important;
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */

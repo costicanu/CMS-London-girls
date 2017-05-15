@@ -17,7 +17,7 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(4);
         return view('admin.users.index', ['users' => $users]);
     }
 
@@ -120,6 +120,11 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
+
+        $user_to_delete=User::findOrFail($id);
+        $user_to_delete->delete();
+
+        return redirect()->route('users.index')->with('message','Utilizatorul '.$user_to_delete->name.' was successfully deleted!');
         //
     }
 }

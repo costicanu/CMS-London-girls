@@ -61,9 +61,12 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-12">
+        <div class="form-group top10">
+            <div class="col-md-6">
                 <input type="submit" name="submit" class="btn btn-primary" value="submit"/>
+            </div>
+            <div class="col-md-6">
+                <a class="btn btn-default" href="{{URL::previous()}}">Cancel</a>
             </div>
         </div>
 
