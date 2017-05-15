@@ -13,7 +13,7 @@
         <a class="btn btn-success" href="{{ action('AdminUsersController@create') }}">Create new user</a>
     </div>
 
-    <table class="table table-hover table-striped">
+    <table class="table table-hover table-striped table-responsive">
         <thead>
         <tr>
             <th>Id</th>
