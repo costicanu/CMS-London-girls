@@ -66,7 +66,7 @@
                 <input type="submit" name="submit" class="btn btn-primary" value="submit"/>
             </div>
             <div class="col-md-6">
-                <a class="btn btn-default" href="{{URL::previous()}}">Cancel</a>
+                <a class="btn btn-default" href="{{action('AdminUsersController@index')}}">Cancel</a>
             </div>
         </div>
 

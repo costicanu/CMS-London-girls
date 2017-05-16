@@ -10,6 +10,11 @@ use App\Http\Middleware\isAdmin;
 
 class AdminUsersController extends Controller
 {
+    public function __construct()
+    {
+        # $this->middleware('isAdmin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -105,8 +110,14 @@ class AdminUsersController extends Controller
         }
 
         $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if (!empty($request->password)) {
+            $user->password = bcrypt($request->password);
+        }
         $user->is_active = is_null($request->is_active) ? 0 : 1;
-        $user->update($request->all());
+        $user->role_id = $request->role_id;
+        $user->update();
 
 
         return redirect()->route('users.index')->with('message', 'Successfully edited!');
@@ -121,10 +132,10 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
 
-        $user_to_delete=User::findOrFail($id);
+        $user_to_delete = User::findOrFail($id);
         $user_to_delete->delete();
 
-        return redirect()->route('users.index')->with('message','Utilizatorul '.$user_to_delete->name.' was successfully deleted!');
+        return redirect()->route('users.index')->with('message', 'Utilizatorul ' . $user_to_delete->name . ' was successfully deleted!');
         //
     }
 }
