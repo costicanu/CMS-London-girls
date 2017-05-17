@@ -21,17 +21,19 @@ class isAdmin
         $user=Auth::user();
         if(!$user){
             #echo 'Not logged in';
-            return false;
+            #return false;
+            return redirect()->to('/');
 
         }
 
-        #var_dump($user);
+
         if($user->isAdmin()){
             return $next($request);
         }
 
         else{
-            return redirect('/');
+            return $next($request);
+
         }
 
         

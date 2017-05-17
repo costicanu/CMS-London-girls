@@ -16,7 +16,7 @@
     <table class="table table-hover table-striped table-responsive">
         <thead>
         <tr>
-            <th>Id</th>
+            <th>DbId</th>
             <th>Email</th>
             <th>Name</th>
             <th>Created At</th>
@@ -33,8 +33,8 @@
             @foreach($users as $user)
                 <tr>
                     <td>{{$user->id}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>{{$user->name}}</td>
+                    <td><a href="{{action('AdminUsersController@edit',['id'=>$user->id])}}"> {{$user->email}}</a></td>
+                    <td><a href="{{action('AdminUsersController@edit',['id'=>$user->id])}}"> {{$user->name}}</a></td>
                     <td>{{$user->created_at?$user->created_at->diffForHumans():''}}</td>
                     <td>{{$user->updated_at?$user->updated_at->diffForHumans():''}}</td>
                     <td>{{$user->role->name}}</td>
@@ -47,10 +47,11 @@
                     </td>
                     <td>
 
-                        <form method="POST" action="{{ action('AdminUsersController@destroy',['id'=>$user->id]) }}" onsubmit="return ConfirmDelete('{{$user->name}}');">
+                        <form method="POST" action="{{ action('AdminUsersController@destroy',['id'=>$user->id]) }}"
+                              onsubmit="return ConfirmDelete('{{$user->name}}');">
                             {!! csrf_field() !!}
-                        <input type="hidden" name="_method" value="DELETE" />
-                        <input type="submit" class="btn btn-danger"  name="submit" value="Delete" />
+                            <input type="hidden" name="_method" value="DELETE"/>
+                            <input type="submit" class="btn btn-danger" name="submit" value="Delete"/>
                         </form>
                     </td>
 

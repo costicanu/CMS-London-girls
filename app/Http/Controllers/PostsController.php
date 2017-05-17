@@ -26,7 +26,7 @@ class PostsController extends Controller
         echo 'i"m the index method';
         $user=Auth::user();
 
-        var_dump($user);
+
     }
 
     /**

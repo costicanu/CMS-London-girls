@@ -32,7 +32,17 @@
             <label for="role_id">Role:</label>
             <select class="form-control" name="role_id" id="role_id">
                 @foreach($roles as $role_key=>$role)
-                    <option value="{{$role_key}}" {{old('role_key')==$role_key?"selected":""}}>{{$role}}</option>
+
+                    <option value="{{$role_key}}"
+                            @if(count($errors)>0)
+                            {{old('role_key',$user->role_id)==$role_key?"selected":""}}
+
+                            @else
+                                {{$user->role_id==$role_key?"selected":""}}
+                                    @endif
+                    >
+
+                        {{$role}}</option>
                 @endforeach
             </select>
         </div>
@@ -68,8 +78,9 @@
             </div>
 
             <div class="col-md-6">
-                <a class="btn btn-default" href="{{URL::previous()}}">Cancel</a>
+                <a class="btn btn-default" href="{{action('AdminUsersController@index')}}">Cancel</a>
             </div>
+
         </div>
 
 
