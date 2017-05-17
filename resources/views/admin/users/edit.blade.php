@@ -34,12 +34,12 @@
                 @foreach($roles as $role_key=>$role)
 
                     <option value="{{$role_key}}"
-                            @if(count($errors)>0)
-                            {{old('role_key',$user->role_id)==$role_key?"selected":""}}
+                    @if(count($errors)>0)
+                        {{old('role_key',$user->role_id)==$role_key?"selected":""}}
 
                             @else
-                                {{$user->role_id==$role_key?"selected":""}}
-                                    @endif
+                        {{$user->role_id==$role_key?"selected":""}}
+                            @endif
                     >
 
                         {{$role}}</option>

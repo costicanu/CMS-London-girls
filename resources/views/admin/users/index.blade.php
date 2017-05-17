@@ -10,7 +10,9 @@
     @endif
 
     <div class="row" id="new-record">
-        <a class="btn btn-success" href="{{ action('AdminUsersController@create') }}">Create new user</a>
+        <div class="col-md-12">
+            <a class="btn btn-success pull-left" href="{{ action('AdminUsersController@create') }}">Create new user</a>
+        </div>
     </div>
 
     <table class="table table-hover table-striped table-responsive">

@@ -22,7 +22,9 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(4);
+        #$user = new User;
+        # $users = $user->orderBy('created_at', 'desc')->paginate(20)->get();
+        $users = User::orderBy('created_at', 'desc')->paginate(20);
         return view('admin.users.index', ['users' => $users]);
     }
 

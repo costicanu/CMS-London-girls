@@ -76,17 +76,10 @@
             @include('layouts.admin_left')
         </div>
 
-        <div class="col-sm-8 text-left">
+        <div class="col-sm-10 admincontent">
             @yield('content')
         </div>
-        <div class="col-sm-2 sidenav">
-            <div class="well">
-                <p>ADS</p>
-            </div>
-            <div class="well">
-                <p>ADS</p>
-            </div>
-        </div>
+
     </div>
 </div>
 
