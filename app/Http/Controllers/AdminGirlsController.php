@@ -3,9 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Auth;
+use App\Role;
+use App\Girl;
+use App\Http\Middleware\isAdmin;
 
 class AdminGirlsController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('isAdmin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +23,9 @@ class AdminGirlsController extends Controller
      */
     public function index()
     {
-        //
+
+        $girls=Girl::orderBy('created_at','desc')->paginate(25);
+        return view('admin.girls.index',['girls'=>$girls]);
     }
 
     /**
@@ -23,6 +35,7 @@ class AdminGirlsController extends Controller
      */
     public function create()
     {
+        return view('admin.girls.create');
         //
     }
 
@@ -34,7 +47,14 @@ class AdminGirlsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $this->validate($request,[
+           'name'=>"required|string|min:3",
+       ]);
+
+        $girl=new Girl();
+        $girl->name=$request->name;
+        $girl->save();
+        return redirect()->route('girls.index')->with('message','Successfully added!');
     }
 
     /**

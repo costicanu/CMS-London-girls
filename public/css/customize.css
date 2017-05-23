@@ -33,11 +33,14 @@ footer {
 
 .admincontent {
     padding-top: 20px;
+    text-align:left;
 }
 
 .text-center {
     text-align: left;
 }
+
+
 
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {

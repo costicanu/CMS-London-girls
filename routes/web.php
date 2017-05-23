@@ -24,6 +24,7 @@ Route::resource('posts','PostsController');
 Route::get('contact','PostsController@contact');
 
 Route::resource('admin/users','AdminUsersController');
+Route::resource('admin/girls','AdminGirlsController');
 
 
 /*

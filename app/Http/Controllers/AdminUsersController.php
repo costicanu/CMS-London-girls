@@ -12,7 +12,7 @@ class AdminUsersController extends Controller
 {
     public function __construct()
     {
-        # $this->middleware('isAdmin');
+        $this->middleware('isAdmin');
     }
 
     /**
@@ -60,7 +60,7 @@ class AdminUsersController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
         #return view('admin.users.index');
-        return redirect()->route('users.index')->with('message', 'Adaugat cu succes!');
+        return redirect()->route('users.index')->with('message', 'Successfully added!');
 
         //
     }
