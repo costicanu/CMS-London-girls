@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 @section('content')
-    <form method="post" action="{{action('AdminGirlsController@store')}}" accept-charset="UTF-8">
+    <form method="post" action="{{action('AdminGirlsController@store')}}" accept-charset="UTF-8" enctype="multipart/form-data">
         {!! csrf_field() !!}
 
         @if(count($errors)>0)
@@ -14,16 +14,25 @@
                 </ul>
             </div>
         @endif
+
         <div class="form-group col-md-12">
             <label for="name">Name</label>
             <input type="text" name="name" value="{{ old('name') }}" class="form-control"/>
         </div>
-        <div class="form-group col-md-12">
-            <label for="own_words">Email</label>
+
+        <div class="row">
+        <div class="form-group col-lg-6">
+            <label for="own_words">Own Words</label>
             <textarea name="own_words" class="form-control">{{ old('own_words') }}</textarea>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-lg-6">
+            <label for="images">Images</label>
+            <input type="file" name="images[]" accept="image/*" multiple>
+        </div>
+            </div>
+
+        <div class="form-group col-md-12">
             <label for="active">Activate post on website?</label>
             <input type="checkbox" name="is_active" value="1" {{ old('is_active')?"checked":"" }} />
         </div>

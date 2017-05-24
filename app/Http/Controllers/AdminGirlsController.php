@@ -7,6 +7,7 @@ use App\User;
 use Auth;
 use App\Role;
 use App\Girl;
+use Illuminate\Support\Facades\Input;
 use App\Http\Middleware\isAdmin;
 
 class AdminGirlsController extends Controller
@@ -24,8 +25,8 @@ class AdminGirlsController extends Controller
     public function index()
     {
 
-        $girls=Girl::orderBy('created_at','desc')->paginate(25);
-        return view('admin.girls.index',['girls'=>$girls]);
+        $girls = Girl::orderBy('created_at', 'desc')->paginate(25);
+        return view('admin.girls.index', ['girls' => $girls]);
     }
 
     /**
@@ -47,14 +48,37 @@ class AdminGirlsController extends Controller
      */
     public function store(Request $request)
     {
-       $this->validate($request,[
-           'name'=>"required|string|min:3",
-       ]);
+        $this->validate($request, [
+            'name' => "required|string|min:3",
+            'images' => "required",
+            'images.*' => "image|mimes:jpg,jpeg,png,gif",
+        ]);
 
-        $girl=new Girl();
-        $girl->name=$request->name;
+        $girl = new Girl();
+        $girl->name = $request->name;
+
+        //uploading images
+        # $files = array('images' => Input::file('images'));
+        $files = $_FILES['images'];
+
+        $no_of_files = count($_FILES['images']['tmp_name']);
+        $images_path = 'media/original/';
+        for ($i = 0; $i < $no_of_files; $i++) {
+            $file_name = $_FILES['images']['name'][$i];
+
+            var_dump($_FILES['images']['tmp_name']);
+            if (!is_file($images_path.$file_name)) { //if already an image with same name
+                $result = move_uploaded_file($_FILES['images']['tmp_name'][$i], $images_path . $file_name);
+            } else { // adding date if you already have an image with same name, the new name is yearMonthDayHourMinuteSeconds and then filename.extension
+                $result = move_uploaded_file($_FILES['images']['tmp_name'][$i], $images_path . date('Ymdhis') . $file_name);
+
+            }
+        }
+
+        die();
+
         $girl->save();
-        return redirect()->route('girls.index')->with('message','Successfully added!');
+        return redirect()->route('girls.index')->with('message', 'Successfully added!');
     }
 
     /**

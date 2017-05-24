@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2017-05-23 17:08:09
+Date: 2017-05-24 17:01:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -89,6 +89,7 @@ CREATE TABLE `images` (
   `url` varchar(200) DEFAULT NULL,
   `created_at` varchar(20) DEFAULT NULL,
   `updated_at` varchar(20) DEFAULT NULL,
+  `featured` tinyint(1) unsigned zerofill DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
