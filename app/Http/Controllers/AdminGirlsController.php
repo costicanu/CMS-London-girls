@@ -112,7 +112,8 @@ class AdminGirlsController extends Controller
     public function edit($id)
     {
         $girl = Girl::where('id', $id)->first();
-        #$images=
+        return view('admin.girls.edit')->with(['girl'=>$girl]);
+
     }
 
     /**

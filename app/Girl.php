@@ -11,7 +11,7 @@ class Girl extends Model
 
     public function images()
     {
-        return $this->hasMany('App\Image');
+        return $this->hasMany('App\ImageOfGirls');
     }
 
 }
