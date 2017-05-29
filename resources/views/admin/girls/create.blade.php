@@ -15,22 +15,24 @@
             </div>
         @endif
 
-        <div class="form-group col-md-12">
-            <label for="name">Name</label>
-            <input type="text" name="name" value="{{ old('name') }}" class="form-control"/>
-        </div>
+
 
         <div class="row">
-        <div class="form-group col-lg-6">
-            <label for="own_words">Own Words</label>
-            <textarea name="own_words" class="form-control">{{ old('own_words') }}</textarea>
-        </div>
+            <div class="form-group col-md-6">
+                <label for="name">Name</label>
+                <input type="text" name="name" value="{{ old('name') }}" class="form-control"/>
+            </div>
 
         <div class="form-group col-lg-6">
             <label for="images">Images</label>
             <input type="file" name="images[]" accept="image/*" multiple>
         </div>
             </div>
+
+        <div class="form-group col-md-12">
+            <label for="own_words">Own Words</label>
+            <textarea name="own_words" class="form-control">{{ old('own_words') }}</textarea>
+        </div>
 
         <div class="form-group col-md-12">
             <label for="active">Activate post on website?</label>

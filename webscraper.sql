@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : Localhost
-Source Server Version : 50617
+Source Server         : localhost_3306
+Source Server Version : 50714
 Source Host           : localhost:3306
 Source Database       : webscraper
 
 Target Server Type    : MYSQL
-Target Server Version : 50617
+Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-05-24 17:01:54
+Date: 2017-05-29 09:08:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -71,13 +71,15 @@ CREATE TABLE `girls` (
   `created_at` varchar(20) DEFAULT NULL,
   `updated_at` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of girls
 -- ----------------------------
 INSERT INTO `girls` VALUES ('1', null, 'n1', 'own_words1', '0000000001', 'comments here', 'location here', 'station here', 'available for here', '21', '22', '23', '24', 'blonde', 'green', 'irish', 'english', 'swimming', 'no', 'straight', 'no tatoos', 'no piercing', '1,2,3', 'no restaurant', 'no cuisine', 'no drink', 'no perfume', '1', '1.5', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', null, null);
 INSERT INTO `girls` VALUES ('2', null, '1212', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '2017-05-23 13:51:00', '2017-05-23 13:51:00');
+INSERT INTO `girls` VALUES ('3', null, 'sdfsdf', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '2017-05-28 17:51:06', '2017-05-28 17:51:06');
+INSERT INTO `girls` VALUES ('4', null, 'sdfsdf', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '2017-05-28 17:52:29', '2017-05-28 17:52:29');
 
 -- ----------------------------
 -- Table structure for images
@@ -91,11 +93,14 @@ CREATE TABLE `images` (
   `updated_at` varchar(20) DEFAULT NULL,
   `featured` tinyint(1) unsigned zerofill DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of images
 -- ----------------------------
+INSERT INTO `images` VALUES ('1', '4', 'media/original/isabelle320170528055229.jpg', '2017-05-28 17:52:29', '2017-05-28 17:52:29', null);
+INSERT INTO `images` VALUES ('2', '4', 'media/original/isabelle520170528055229.jpg', '2017-05-28 17:52:29', '2017-05-28 17:52:29', null);
+INSERT INTO `images` VALUES ('3', '4', 'media/original/isabelle620170528055229.jpg', '2017-05-28 17:52:30', '2017-05-28 17:52:30', null);
 
 -- ----------------------------
 -- Table structure for posts

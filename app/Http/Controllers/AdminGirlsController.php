@@ -7,6 +7,7 @@ use App\User;
 use Auth;
 use App\Role;
 use App\Girl;
+use App\Image;
 use Illuminate\Support\Facades\Input;
 use App\Http\Middleware\isAdmin;
 
@@ -59,26 +60,36 @@ class AdminGirlsController extends Controller
 
         //uploading images
         # $files = array('images' => Input::file('images'));
-        $files = $_FILES['images'];
+        if ($_FILES['images']) {
+            $files = $_FILES;
+            $imagesPath = $this->uploadImages($files);
 
-        $no_of_files = count($_FILES['images']['tmp_name']);
-        $images_path = 'media/original/';
-        for ($i = 0; $i < $no_of_files; $i++) {
-            $file_name = $_FILES['images']['name'][$i];
-
-            var_dump($_FILES['images']['tmp_name']);
-            if (!is_file($images_path.$file_name)) { //if already an image with same name
-                $result = move_uploaded_file($_FILES['images']['tmp_name'][$i], $images_path . $file_name);
-            } else { // adding date if you already have an image with same name, the new name is yearMonthDayHourMinuteSeconds and then filename.extension
-                $result = move_uploaded_file($_FILES['images']['tmp_name'][$i], $images_path . date('Ymdhis') . $file_name);
-
-            }
         }
 
-        die();
-
         $girl->save();
+        foreach ($imagesPath as $eachPath) {
+            $girl->images()->save(new Image(['url' => $eachPath]));
+        }
+
         return redirect()->route('girls.index')->with('message', 'Successfully added!');
+    }
+
+
+    private function uploadImages($files)
+    {
+        $no_of_files = count($files['images']['name']);
+        $images_path = 'media/original/';
+        for ($i = 0; $i < $no_of_files; $i++) {
+            $file_name = $files['images']['name'][$i];
+            if (!is_file($images_path . $file_name)) { //if already an image with same name
+                $fileNames[$i] = filter_var($images_path . $file_name, FILTER_SANITIZE_URL);
+            } else { // adding date if you already have an image with same name, the new name is yearMonthDayHourMinuteSeconds and then filename.extension
+                $fileNames[$i] = $images_path . filter_var(current(explode(".", $file_name)), FILTER_SANITIZE_URL) . date('Ymdhis') . "." . last(explode(".", $file_name));
+            }
+            $result = move_uploaded_file($files['images']['tmp_name'][$i], $fileNames[$i]);
+        }
+        return $fileNames;
+
     }
 
     /**
@@ -100,7 +111,8 @@ class AdminGirlsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $girl = Girl::where('id', $id)->first();
+        #$images=
     }
 
     /**
