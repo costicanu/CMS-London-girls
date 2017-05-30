@@ -29,12 +29,26 @@
             </div>
 
             @if($girl->images)
+
                 <div class="other-images">
                     <table class="table table-condensed">
                         <thead>
-                        <tr></tr>
-                        <th>Image</th>
+                        <tr>
+                            <th>Images</th>
+                            <th>Main Picture</th>
+                            <th>Delete?</th>
+                        </tr>
                         </thead>
+                        <tbody>
+                            @foreach($girl->images as $image)
+                            <tr>
+                                <td>
+                                    <?php #var_dump($image->url)?>
+                                    <img src="<?php $the_array=explode("/", $image->url); echo Image::url('media/thumbnails/100x200_' . end($the_array),100,200); ?>" />
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             @endif

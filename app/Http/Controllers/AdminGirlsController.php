@@ -7,9 +7,11 @@ use App\User;
 use Auth;
 use App\Role;
 use App\Girl;
-use App\Image;
+use App\ImageOfGirls;
+use Folklore\Image\Facades\Image;
 use Illuminate\Support\Facades\Input;
 use App\Http\Middleware\isAdmin;
+use Imagine\Gmagick\Imagine;
 
 class AdminGirlsController extends Controller
 {
@@ -63,17 +65,31 @@ class AdminGirlsController extends Controller
         if ($_FILES['images']) {
             $files = $_FILES;
             $imagesPath = $this->uploadImages($files);
+            $this->createThumbs($imagesPath);
 
         }
 
         $girl->save();
         foreach ($imagesPath as $eachPath) {
-            $girl->images()->save(new Image(['url' => $eachPath]));
+            $girl->images()->save(new ImageOfGirls(['url' => $eachPath]));
         }
 
         return redirect()->route('girls.index')->with('message', 'Successfully added!');
     }
 
+
+    private function createThumbs($imagesPath)
+    {
+        foreach ($imagesPath as $imagePath) {
+
+            Image::make($imagePath, array(
+                'width' => 100,
+                'height' => 200,
+            ))->save('media/thumbnails/100x200/' . end(explode(".", $imagePath)));
+
+
+        }
+    }
 
     private function uploadImages($files)
     {
@@ -112,7 +128,7 @@ class AdminGirlsController extends Controller
     public function edit($id)
     {
         $girl = Girl::where('id', $id)->first();
-        return view('admin.girls.edit')->with(['girl'=>$girl]);
+        return view('admin.girls.edit')->with(['girl' => $girl]);
 
     }
 
