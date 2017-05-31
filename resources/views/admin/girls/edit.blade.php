@@ -44,7 +44,7 @@
                             <tr>
                                 <td>
                                     <?php #var_dump($image->url)?>
-                                    <img src="<?php $the_array=explode("/", $image->url); echo Image::url('media/thumbnails/100x200_' . end($the_array),100,200); ?>" />
+                                    <img src="<?php $the_array=explode("/", $image->url); echo Image::url('media/original/' . end($the_array),400,100); ?>" />
                                 </td>
                             </tr>
                             @endforeach

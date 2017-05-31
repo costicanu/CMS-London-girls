@@ -81,11 +81,11 @@ class AdminGirlsController extends Controller
     private function createThumbs($imagesPath)
     {
         foreach ($imagesPath as $imagePath) {
-
+            $getting_file_name=explode("/", $imagePath);
             Image::make($imagePath, array(
                 'width' => 100,
                 'height' => 200,
-            ))->save('media/thumbnails/100x200/' . end(explode(".", $imagePath)));
+             ))->save('media/thumbnails/' . end($getting_file_name));
 
 
         }
