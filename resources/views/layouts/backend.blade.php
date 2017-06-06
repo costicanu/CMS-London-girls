@@ -9,10 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <link media="all" type="text/css" rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}">
-    <link media="all" type="text/css" rel="stylesheet" href="{{URL::asset('css/customize.css')}}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link media="all" type="text/css" rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}" />
+    <link media="all" type="text/css" rel="stylesheet" href="{{URL::asset('css/lightbox.min.css')}}">
+    <link media="all" type="text/css" rel="stylesheet" href="{{URL::asset('css/customize.css')}}" />
+
+
+    <script src="{{URL::asset('js/jquery.js')}}"></script>
+    <script src="{{URL::asset('js/admin/custom.js')}}"></script>
     <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{URL::asset('js/lightbox.min.js')}}"></script>
 
 </head>
 <body>

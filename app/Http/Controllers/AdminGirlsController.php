@@ -59,50 +59,63 @@ class AdminGirlsController extends Controller
 
         $girl = new Girl();
         $girl->name = $request->name;
+        $girl->own_words = $request->own_words;
 
         //uploading images
         # $files = array('images' => Input::file('images'));
         if ($_FILES['images']) {
             $files = $_FILES;
-            $imagesPath = $this->uploadImages($files);
-            $this->createThumbs($imagesPath);
+            $imagesName = $this->uploadImages($files);
+            $this->createThumbs($imagesName, 100, 100);
 
         }
 
         $girl->save();
-        foreach ($imagesPath as $eachPath) {
-            $girl->images()->save(new ImageOfGirls(['url' => $eachPath]));
+        foreach ($imagesName as $eachImage) {
+            $girl->images()->save(new ImageOfGirls(['name' => $eachImage]));
         }
 
         return redirect()->route('girls.index')->with('message', 'Successfully added!');
     }
 
 
-    private function createThumbs($imagesPath)
+    private function createThumbs($imagesName, $width, $height)
     {
-        foreach ($imagesPath as $imagePath) {
-            $getting_file_name=explode("/", $imagePath);
-            Image::make($imagePath, array(
-                'width' => 100,
-                'height' => 200,
-             ))->save('media/thumbnails/' . end($getting_file_name));
+        $thumbnail_location = 'media/thumbnails/' . $width . 'x' . $height . '/';
+        if (!file_exists($thumbnail_location)) {
+            mkdir($thumbnail_location, 0777, true);
+        }
+        foreach ($imagesName as $eachImageName) {
+            $image_location = 'media/original/' . $eachImageName;
+            list($width_current, $height_current) = getimagesize($image_location);
+            if ($width_current <= $width || $height_current < $height) {   //don't resize
+                Image::make($image_location, array())->save($thumbnail_location . $eachImageName);
+            } else {           //resize
+                Image::make($image_location, array(
+                    'width' => $width,
+                    'height' => $height,
+                ))->save($thumbnail_location . $eachImageName);
 
+            }
 
         }
     }
 
     private function uploadImages($files)
     {
-        $no_of_files = count($files['images']['name']);
         $images_path = 'media/original/';
+        $no_of_files = count($files['images']['name']);
+
         for ($i = 0; $i < $no_of_files; $i++) {
             $file_name = $files['images']['name'][$i];
+
             if (!is_file($images_path . $file_name)) { //if already an image with same name
-                $fileNames[$i] = filter_var($images_path . $file_name, FILTER_SANITIZE_URL);
+                $fileNames[$i] = filter_var($file_name, FILTER_SANITIZE_URL);
             } else { // adding date if you already have an image with same name, the new name is yearMonthDayHourMinuteSeconds and then filename.extension
-                $fileNames[$i] = $images_path . filter_var(current(explode(".", $file_name)), FILTER_SANITIZE_URL) . date('Ymdhis') . "." . last(explode(".", $file_name));
+                $fileNames[$i] = filter_var(current(explode(".", $file_name)), FILTER_SANITIZE_URL) . date('Ymdhis') . "." . last(explode(".", $file_name));
             }
-            $result = move_uploaded_file($files['images']['tmp_name'][$i], $fileNames[$i]);
+            $result = move_uploaded_file($files['images']['tmp_name'][$i], $images_path . $fileNames[$i]);
+
         }
         return $fileNames;
 
@@ -142,6 +155,33 @@ class AdminGirlsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'name' => "required|string|min:3",
+        ]);
+
+        $girl = Girl::findOrFail($id);
+        $girl->name = $request->name;
+        $girl->own_words = $request->own_words;
+
+        //uploading images
+        # $files = array('images' => Input::file('images'));
+
+
+        $girl->save();
+
+        if (!empty($_FILES['images']['tmp_name'][0])) { // if any image uploaded
+            $files = $_FILES;
+            $imagesName = $this->uploadImages($files);
+            $this->createThumbs($imagesName, 100, 100);
+            foreach ($imagesName as $eachImage) {
+                $girl->images()->save(new ImageOfGirls(['name' => $eachImage]));
+            }
+
+        }
+
+
+        return redirect()->route('girls.index')->with('message', 'Successfully modified!');
+
     }
 
     /**
@@ -152,6 +192,22 @@ class AdminGirlsController extends Controller
      */
     public function destroy($id)
     {
+        $girl_to_delete = Girl::findOrFail($id);
+        $girl_to_delete->delete();
+
+        return redirect()->route('girls.index')->with('message', 'The girl ' . $girl_to_delete->name . ' was successfully deleted!');
         //
     }
+
+    public function deleteimage($id)
+    {
+        $image = ImageOfGirls::where('id', $id)->first();
+        if ($image) {
+             $image->delete();
+            return 1;
+        }
+
+        return 0;
+    }
+
 }

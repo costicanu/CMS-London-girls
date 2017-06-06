@@ -25,7 +25,7 @@ return array(
     | When manipulating an image, the memory limit is increased to this value
     |
     */
-    'memory_limit' => '128M',
+    'memory_limit' => '900M',
 
     /*
     |--------------------------------------------------------------------------

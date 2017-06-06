@@ -14,6 +14,7 @@
 use App\Post;
 
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,6 +26,7 @@ Route::get('contact','PostsController@contact');
 
 Route::resource('admin/users','AdminUsersController');
 Route::resource('admin/girls','AdminGirlsController');
+Route::get('admin/girls/deleteimage/{id}','AdminGirlsController@deleteimage');
 
 
 /*
@@ -51,3 +53,4 @@ Route::get('/basicinsert',function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/girl/{url}', 'HomeController@girl')->name('home');

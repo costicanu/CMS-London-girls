@@ -1,6 +1,10 @@
 @extends('layouts.backend')
 @section('content')
-    <form method="post" action="{{action('AdminGirlsController@update',$girl->id)}}" accept-charset="UTF-8">
+
+    <meta name="_token" content="{!! csrf_token() !!}"/>
+
+    <form method="post" action="{{action('AdminGirlsController@update',$girl->id)}}" enctype="multipart/form-data"
+          accept-charset="UTF-8">
         {!! csrf_field() !!}
         <input type="hidden" name="_method" value="PUT"/>
         @if(count($errors)>0)
@@ -31,27 +35,44 @@
             @if($girl->images)
 
                 <div class="other-images">
+                    <meta name="csrf-token" content="{{ csrf_token() }}"/>
                     <table class="table table-condensed">
                         <thead>
                         <tr>
                             <th>Images</th>
-                            <th>Main Picture</th>
+                            <th>Featured</th>
+                            <th>Order</th>
                             <th>Delete?</th>
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($girl->images as $image)
+                        @foreach($girl->images as $image)
                             <tr>
                                 <td>
                                     <?php #var_dump($image->url)?>
-                                    <img src="<?php $the_array=explode("/", $image->url); echo Image::url('media/original/' . end($the_array),400,100); ?>" />
+                                    <a href="{{URL::to('/media/original/'.$image->name)}}" data-lightbox="gallery"><img
+                                                src="/media/thumbnails/100x100/{{$image->name}}" class="thumbnail"/></a>
+
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="main_image" value="{{$image->id}}"/>
+                                </td>
+                                <td>
+                                    <input type="textfield" name="order_{{$image->id}}"/>
+                                </td>
+                                <td>
+
+                                    <span class="btn btn-danger delete-picture" id="{{$image->id}}"
+                                          data-value="{{action('AdminGirlsController@deleteimage',$image->id)}}"
+                                          onclick="return ConfirmDelete(' this image');">Delete Picture</span>
+
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-            @endif
+                @endif
 
         </div>
 
@@ -95,4 +116,17 @@
             toolbar: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect forecolor backcolor | link unlink anchor | image media | print preview code"
         });
     </script>
-@stop
+    @stop
+
+
+    <script type="text/javascript">
+
+        function ConfirmDelete(name) {
+            var x = confirm('Are you sure you want to delete ' + name + '?');
+            if (x)
+                return true;
+            else
+                return false;
+        }
+
+    </script>

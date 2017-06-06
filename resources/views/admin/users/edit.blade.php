@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 @section('content')
-    <form method="post" action="{{action('AdminUsersController@update',$user->id)}}" accept-charset="UTF-8">
+    <form method="post" action="{{action('AdminUsersController@update',$user->id)}}" enctype="multipart/form-data" accept-charset="UTF-8">
         {!! csrf_field() !!}
         <input type="hidden" name="_method" value="PUT"/>
         @if(count($errors)>0)
