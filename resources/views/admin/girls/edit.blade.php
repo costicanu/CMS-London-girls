@@ -20,9 +20,13 @@
         @endif
 
         <div class="row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <label for="name">Name</label>
                 <input type="text" name="name" value="{{ old('name',$girl->name) }}" class="form-control"/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="url">URL</label>
+                <input type="text" name="url" value="{{ old('url',$girl->url) }}" class="form-control"/>
             </div>
         </div>
 
@@ -84,7 +88,7 @@
 
         <div class="form-group col-md-12">
             <label for="active">Activate post on website?</label>
-            <input type="checkbox" name="is_active" value="1" {{ old('is_active')?"checked":"" }} />
+            <input type="checkbox" name="is_active" value="1" {{ old('is_active',$girl->is_active)?"checked":"" }} />
         </div>
 
 

@@ -209,6 +209,8 @@
 <body>
 
 <!-- Navigation -->
+
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -295,13 +297,6 @@
     <!-- /.container -->
 </nav>
 
-<!-- Header Carousel -->
-<header id="myCarousel" class="carousel slide">
-
-
-
-
-</header>
 
 <!-- Page Content -->
 <div class="container">
@@ -319,26 +314,28 @@
                 <!-- category  -->
                 <div data-cat="Category one">
 
+                    @foreach($girl->images as $image)
+                        <ul>
+                            <li data-url="{{URL::asset('/media/thumbnails/440x660/'.$image->name)}}" data-width="900" data-height="550"></li>
+                            <li data-thumbnail-path="{{URL::asset('/images/thumbnails/7.jpg')}}"></li>
+                            <li data-thumbnail-text="" data-thumbnail-text-title-offset="43"
+                                data-thumbnail-text-offset-top="16"
+                                data-thumbnail-text-offset-bottom="7">
+                                <p class="largeLabel">{{$girl->name}}</p>
+                                <p class="smallLabel">{{str_limit(strip_tags($girl->own_words),25)}}</p>
+                            </li>
+                            <li data-info="">
+                                <p class="mediaDescriptionHeader">fullsize title</p>
+                                <p class="mediaDescriptionText">
+                                    Full size description.
+                                </p>
+                            </li>
+                        </ul>
 
-                    <ul>
-                        <li data-url="http://vimeo.com/50747914" data-width="900" data-height="550"></li>
-                        <li data-thumbnail-path="{{URL::asset('/images/thumbnails/7.jpg')}}"></li>
-                        <li data-thumbnail-text="" data-thumbnail-text-title-offset="43" data-thumbnail-text-offset-top="16"
-                            data-thumbnail-text-offset-bottom="7">
-                            <p class="largeLabel">CUSTOMIZABLE SKIN AND COLOR</p>
-                            <p class="smallLabel">The entire color theme can be modified.</p>
-                        </li>
-                        <li data-info="">
-                            <p class="mediaDescriptionHeader">CUSTOMIZABLE SKIN AND COLOR</p>
-                            <p class="mediaDescriptionText">The entire color theme can be modified, and also the skin can be
-                                replaced with your own.</p>
-                        </li>
-                    </ul>
-
+                    @endforeach
 
                 </div>
                 <!-- end  -->
-
 
 
             </div>
@@ -389,215 +386,6 @@
     </div>
     <!-- /.row -->
 
-    <!-- Carousel Section -->
-    <div class="row">
-        <div id="coverflowData" style="display: none;">
-
-            <!-- category  -->
-            <div data-cat="Category one">
-                <ul>
-                    <li data-url="http://www.webdesign-flash.ro/iframe.html" data-width="900" data-height="650"></li>
-                    <li data-thumbnail-path="load/media/thumbnails/iframe.jpg"></li>
-                    <li data-thumbnail-text="" data-thumbnail-text-title-offset="43" data-thumbnail-text-offset-top="16"
-                        data-thumbnail-text-offset-bottom="7">
-                        <p class="largeLabel">FULL MULDIMEDIA SUPPORT</p>
-                        <p class="smallLabel">Awesome full multimedia support ( mp4, mp3, .swf, jpg, jpeg, png, youtube,
-                            vimeo ).</p>
-                    </li>
-                    <li data-info="">
-                        <p class="mediaDescriptionHeader">FULL MULDIMEDIA SUPPORT</p>
-                        <p class="mediaDescriptionText">Awesome full multimedia support <span class=italic">mp4</span>,
-                            mp3, .swf, jpg, jpeg, png, youtube, vimeo ).</p>
-                    </li>
-                </ul>
-
-                <ul>
-                    <li data-url="link:http://www.google.com" data-target="_blank"></li>
-                    <li data-thumbnail-path="load/media/thumbnails/link.jpg"></li>
-                    <li data-thumbnail-text="" data-thumbnail-text-title-offset="43" data-thumbnail-text-offset-top="16"
-                        data-thumbnail-text-offset-bottom="7">
-                        <p class="largeLabel">CUSTOM CLICK THUMBNAIL ACTION</p>
-                        <p class="smallLabel">When a thumbnail is clicked it can open a browser window, the lightbox or
-                            no action.</p>
-                    </li>
-                </ul>
-
-                <ul>
-                    <li data-url="load/media/flash/fwd.swf" data-width="800" data-height="500"></li>
-                    <li data-thumbnail-path="load/media/thumbnails/flash.jpg"></li>
-                    <li data-thumbnail-text="" data-thumbnail-text-title-offset="43" data-thumbnail-text-offset-top="16"
-                        data-thumbnail-text-offset-bottom="7">
-                        <p class="largeLabel">CUSTOM TEXT CAN BE ADDED HERE</p>
-                        <p class="smallLabel">Full css support, the text which appears here.</p>
-                    </li>
-                    <li data-info="">
-                        <p class="mediaDescriptionHeader">CUSTOM TEXT CAN BE ADDED HERE AND FORMATTED WITH CSS</p>
-                        <p class="mediaDescriptionText">Full css support, the text which appear over the thumbnail can
-                            be formatted with CSS.</p>
-                    </li>
-                </ul>
-
-                <ul>
-                    <li data-url="https://www.google.com/maps/embed/v1/place?q=castelul%20hunedoara&key=..."
-                        data-width="1100" data-height="650"></li>
-                    <li data-thumbnail-path="load/media/thumbnails/maps.jpg"></li>
-                    <li data-thumbnail-text="" data-thumbnail-text-title-offset="43" data-thumbnail-text-offset-top="16"
-                        data-thumbnail-text-offset-bottom="7">
-                        <p class="largeLabel">THUMBNAILS DESCRIPTION</p>
-                        <p class="smallLabel">Each thumbnail can have optional short description and an optional
-                            detailed description in the lightbx item.</p>
-                    </li>
-                </ul>
-
-                <ul>
-                    <li data-url="http://www.webdesign-flash.ro/iframe.html" data-width="900" data-height="650"></li>
-                    <li data-thumbnail-path="load/media/thumbnails/iframe.jpg"></li>
-                    <li data-thumbnail-text="" data-thumbnail-text-title-offset="43" data-thumbnail-text-offset-top="16"
-                        data-thumbnail-text-offset-bottom="7">
-                        <p class="largeLabel">FULL MULDIMEDIA SUPPORT</p>
-                        <p class="smallLabel">Awesome full multimedia support ( mp4, mp3, .swf, jpg, jpeg, png, youtube,
-                            vimeo ).</p>
-                    </li>
-                    <li data-info="">
-                        <p class="mediaDescriptionHeader">FULL MULDIMEDIA SUPPORT</p>
-                        <p class="mediaDescriptionText">Awesome full multimedia support <span class=italic">mp4</span>,
-                            mp3, .swf, jpg, jpeg, png, youtube, vimeo ).</p>
-                    </li>
-                </ul>
-
-                <ul>
-                    <li data-url="link:http://www.google.com" data-target="_blank"></li>
-                    <li data-thumbnail-path="load/media/thumbnails/link.jpg"></li>
-                    <li data-thumbnail-text="" data-thumbnail-text-title-offset="43" data-thumbnail-text-offset-top="16"
-                        data-thumbnail-text-offset-bottom="7">
-                        <p class="largeLabel">CUSTOM CLICK THUMBNAIL ACTION</p>
-                        <p class="smallLabel">When a thumbnail is clicked it can open a browser window, the lightbox or
-                            no action.</p>
-                    </li>
-                </ul>
-
-                <ul>
-                    <li data-url="load/media/images/1.jpg"></li>
-                    <li data-thumbnail-path="load/media/thumbnails/image.jpg"></li>
-                    <li data-thumbnail-text="" data-thumbnail-text-title-offset="43" data-thumbnail-text-offset-top="16"
-                        data-thumbnail-text-offset-bottom="7">
-                        <p class="largeLabel">RESPONSIVE LAYOUT</p>
-                        <p class="smallLabel">Royal 3D Coverflow has responsive layout.</p>
-                    </li>
-                    <li data-info="">
-                        <p class="mediaDescriptionHeader">VIMEO AND YOUTUBE SUPPORT</p>
-                        <p class="mediaDescriptionText">All you have to do is to include the link from YouTube or Vimeo
-                            video that you want to display and the lightbox will display and play your video. The size
-                            (width and height) of each video can be set easily.</p>
-                    </li>
-                </ul>
-
-                <ul>
-                    <li data-url="https://www.youtube.com/watch?v=9bZkp7q19f0" data-width="1000" data-height="550"></li>
-                    <li data-thumbnail-path="load/media/thumbnails/youtube.jpg"></li>
-                    <li data-thumbnail-text="" data-thumbnail-text-title-offset="35" data-thumbnail-text-offset-top="10"
-                        data-thumbnail-text-offset-bottom="7">
-                        <p class="largeLabel">VIMEO, YOUTUBE, HTML5 VIDEO!</p>
-                        <p class="smallLabel">Revolution lightbox can load and play videos from Youtube, Vimeo or
-                            HTML5.</p>
-                    </li>
-                    <li data-info="">
-                        <p class="mediaDescriptionHeader">VIMEO, YOUTUBE, HTML5 VIDEO!</p>
-                        <p class="mediaDescriptionText">All you have to do is to include the link from YouTube, Vimeo or
-                            mp4 video that you want to display and the lightbox will display and play your video. The
-                            size (width and height) of each video can be set easily.</p>
-                    </li>
-                </ul>
-
-                <ul>
-                    <li data-url="http://vimeo.com/50747914" data-width="900" data-height="550"></li>
-                    <li data-thumbnail-path="load/media/thumbnails/vimeo.jpg"></li>
-                    <li data-thumbnail-text="" data-thumbnail-text-title-offset="43" data-thumbnail-text-offset-top="16"
-                        data-thumbnail-text-offset-bottom="7">
-                        <p class="largeLabel">CUSTOMIZABLE SKIN AND COLOR</p>
-                        <p class="smallLabel">The entire color theme can be modified.</p>
-                    </li>
-                    <li data-info="">
-                        <p class="mediaDescriptionHeader">CUSTOMIZABLE SKIN AND COLOR</p>
-                        <p class="mediaDescriptionText">The entire color theme can be modified, and also the skin can be
-                            replaced with your own.</p>
-                    </li>
-                </ul>
-
-                <ul>
-                    <li data-url="load/media/audio/audio.mp3"></li>
-                    <li data-thumbnail-path="load/media/thumbnails/audio.jpg"></li>
-                    <li data-thumbnail-text="" data-thumbnail-text-title-offset="43" data-thumbnail-text-offset-top="16"
-                        data-thumbnail-text-offset-bottom="7">
-                        <p class="largeLabel">OUTSTANDING PERFORMANCE</p>
-                        <p class="smallLabel">High performance using OOP and the latest CSS techniques.</p>
-                    </li>
-                    <li data-info="">
-                        <p class="mediaDescriptionHeader">OUTSTANDING PERFORMANCE</p>
-                        <p class="mediaDescriptionText">High performance using OOP code and the latest CSS techniques,
-                            ready for mobile with swipe and pinch support, very flexible, easy to setup and extremely
-                            customizable.</p>
-                    </li>
-                </ul>
-
-                <ul>
-                    <li data-url="load/media/videos/video-desktop.mp4,load/media/videos/video-mobile.mp4"
-                        data-poster-path="load/media/posters/video-desktop.jpg" data-width="900" data-height="506"></li>
-                    <li data-thumbnail-path="load/media/thumbnails/video.jpg"></li>
-                    <li data-thumbnail-text="" data-thumbnail-text-title-offset="43" data-thumbnail-text-offset-top="16"
-                        data-thumbnail-text-offset-bottom="7">
-                        <p class="largeLabel">REVOLUTION LIGHTBOX INCLUDED</p>
-                        <p class="smallLabel">Full blown multimedia responsive lightbox included.</p>
-                    </li>
-                    <li data-info>
-                        <p class="mediaDescriptionHeader">REVOLUTION LIGHTBOX INCLUDED</p>
-                        <p class="mediaDescriptionText">Full blown multimedia responsive lightbox included, it runs on
-                            all major browsers and mobile devices like iPhone, iPad, iOS, Android and Windows desktop or
-                            mobile. It has support for image (jpg, jpeg, png, video (mp4), audio (mp3), Vimeo, YouTube,
-                            iFrame, Google maps and flash.</p>
-                    </li>
-                </ul>
-
-                <ul>
-                    <li data-url="https://www.youtube.com/watch?v=9bZkp7q19f0" data-width="1000" data-height="550"></li>
-                    <li data-thumbnail-path="load/media/thumbnails/youtube.jpg"></li>
-                    <li data-thumbnail-text="" data-thumbnail-text-title-offset="35" data-thumbnail-text-offset-top="10"
-                        data-thumbnail-text-offset-bottom="7">
-                        <p class="largeLabel">VIMEO, YOUTUBE, HTML5 VIDEO!</p>
-                        <p class="smallLabel">Revolution lightbox can load and play videos from Youtube, Vimeo or
-                            HTML5.</p>
-                    </li>
-                    <li data-info="">
-                        <p class="mediaDescriptionHeader">VIMEO, YOUTUBE, HTML5 VIDEO!</p>
-                        <p class="mediaDescriptionText">All you have to do is to include the link from YouTube, Vimeo or
-                            mp4 video that you want to display and the lightbox will display and play your video. The
-                            size (width and height) of each video can be set easily.</p>
-                    </li>
-                </ul>
-
-                <ul>
-                    <li data-url="http://vimeo.com/50747914" data-width="900" data-height="550"></li>
-                    <li data-thumbnail-path="load/media/thumbnails/vimeo.jpg"></li>
-                    <li data-thumbnail-text="" data-thumbnail-text-title-offset="43" data-thumbnail-text-offset-top="16"
-                        data-thumbnail-text-offset-bottom="7">
-                        <p class="largeLabel">CUSTOMIZABLE SKIN AND COLOR</p>
-                        <p class="smallLabel">The entire color theme can be modified.</p>
-                    </li>
-                    <li data-info="">
-                        <p class="mediaDescriptionHeader">CUSTOMIZABLE SKIN AND COLOR</p>
-                        <p class="mediaDescriptionText">The entire color theme can be modified, and also the skin can be
-                            replaced with your own.</p>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- end  -->
-
-
-
-        </div>
-    </div>
-    <!-- /.row -->
 
     <!-- Features Section -->
     <div class="row">

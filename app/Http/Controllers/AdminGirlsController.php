@@ -53,6 +53,7 @@ class AdminGirlsController extends Controller
     {
         $this->validate($request, [
             'name' => "required|string|min:3",
+            'url'=> "required|string|max:255|unique:girls",
             'images' => "required",
             'images.*' => "image|mimes:jpg,jpeg,png,gif",
         ]);
@@ -60,6 +61,13 @@ class AdminGirlsController extends Controller
         $girl = new Girl();
         $girl->name = $request->name;
         $girl->own_words = $request->own_words;
+        $girl->is_active= $request->is_active;
+        if(!empty($request->url)) {
+            $girl->url = urlencode($request->url);
+        }
+        else {
+            $girl->url = urlencode($request->name);
+        }
 
         //uploading images
         # $files = array('images' => Input::file('images'));
@@ -67,6 +75,8 @@ class AdminGirlsController extends Controller
             $files = $_FILES;
             $imagesName = $this->uploadImages($files);
             $this->createThumbs($imagesName, 100, 100);
+            $this->createThumbs($imagesName, 440,660);
+
 
         }
 
@@ -157,11 +167,20 @@ class AdminGirlsController extends Controller
         //
         $this->validate($request, [
             'name' => "required|string|min:3",
+            'url' => "required|string|max:255|unique:girls,url," . $id,
         ]);
 
         $girl = Girl::findOrFail($id);
         $girl->name = $request->name;
         $girl->own_words = $request->own_words;
+        $girl->is_active= $request->is_active;
+        if(!empty($request->url)) {
+
+            $girl->url = urlencode($request->url);
+        }
+        else {
+            $girl->url = urlencode($request->name);
+        }
 
         //uploading images
         # $files = array('images' => Input::file('images'));
@@ -173,6 +192,8 @@ class AdminGirlsController extends Controller
             $files = $_FILES;
             $imagesName = $this->uploadImages($files);
             $this->createThumbs($imagesName, 100, 100);
+            $this->createThumbs($imagesName, 440,660);
+
             foreach ($imagesName as $eachImage) {
                 $girl->images()->save(new ImageOfGirls(['name' => $eachImage]));
             }

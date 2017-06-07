@@ -3,10 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 31 Mai 2017 la 14:02
--- Versiune server: 5.6.17-log
+-- Generation Time: Jun 07, 2017 at 02:05 PM
+-- Server version: 5.6.17-log
 -- PHP Version: 5.6.25
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -23,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structura de tabel pentru tabelul `girls`
+-- Table structure for table `girls`
 --
 
 CREATE TABLE `girls` (
@@ -76,59 +77,67 @@ CREATE TABLE `girls` (
   `rate_additional_days_outcall` varchar(10) DEFAULT NULL,
   `services` text,
   `created_at` varchar(20) DEFAULT NULL,
-  `updated_at` varchar(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `updated_at` varchar(20) DEFAULT NULL,
+  `url` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Salvarea datelor din tabel `girls`
+-- Dumping data for table `girls`
 --
 
-INSERT INTO `girls` (`id`, `is_active`, `name`, `own_words`, `interview_id`, `ower_comments`, `location`, `nearest_station`, `available_for`, `age`, `height`, `statistics`, `shoe_size`, `hair`, `eyes`, `nationality`, `languages`, `hobbies_sports`, `smoking`, `sexual_orientation`, `large_tattoos`, `intimate_piercings`, `duo_partner`, `favorite_restaurants`, `favorite_cuisine`, `favorite_drink`, `favorite_perfume`, `rate_1_hour`, `rate_1_5_hours`, `rate_2_hours`, `rate_3_hours`, `rate_dinner_date`, `rate_overnight_12_hours`, `rate_overnight_14_hours`, `rate_1_hour_outcall`, `rate_1_5_hours_outcall`, `rate_2_hours_outcall`, `rate_3_hours_outcall`, `rate_dinner_date_outcall`, `rate_overnight_12_hours_outcall`, `rate_overnight_14_hours_outcall`, `rate_24_hours`, `rate_48_hours`, `rate_additional_days`, `rate_24_hours_outcall`, `rate_48_hours_outcall`, `rate_additional_days_outcall`, `services`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'n1', 'own_words1', 0000000001, 'comments here', 'location here', 'station here', 'available for here', '21', '22', '23', '24', 'blonde', 'green', 'irish', 'english', 'swimming', 'no', 'straight', 'no tatoos', 'no piercing', '1,2,3', 'no restaurant', 'no cuisine', 'no drink', 'no perfume', '1', '1.5', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', NULL, NULL),
-(2, NULL, '1212', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-05-23 13:51:00', '2017-05-23 13:51:00'),
-(3, NULL, 'sdfsdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-05-28 17:51:06', '2017-05-28 17:51:06'),
-(4, NULL, 'sdfsdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-05-28 17:52:29', '2017-05-28 17:52:29'),
-(5, NULL, 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-05-30 12:17:55', '2017-05-30 12:17:55'),
-(6, NULL, 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-05-30 12:22:17', '2017-05-30 12:22:17'),
-(7, NULL, 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-05-30 12:23:47', '2017-05-30 12:23:47'),
-(8, NULL, 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-05-30 12:24:09', '2017-05-30 12:24:09'),
-(9, NULL, 'test2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-05-30 13:20:53', '2017-05-30 13:20:53'),
-(10, NULL, 'test3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-05-31 12:23:37', '2017-05-31 12:23:37');
+INSERT INTO `girls` (`id`, `is_active`, `name`, `own_words`, `interview_id`, `ower_comments`, `location`, `nearest_station`, `available_for`, `age`, `height`, `statistics`, `shoe_size`, `hair`, `eyes`, `nationality`, `languages`, `hobbies_sports`, `smoking`, `sexual_orientation`, `large_tattoos`, `intimate_piercings`, `duo_partner`, `favorite_restaurants`, `favorite_cuisine`, `favorite_drink`, `favorite_perfume`, `rate_1_hour`, `rate_1_5_hours`, `rate_2_hours`, `rate_3_hours`, `rate_dinner_date`, `rate_overnight_12_hours`, `rate_overnight_14_hours`, `rate_1_hour_outcall`, `rate_1_5_hours_outcall`, `rate_2_hours_outcall`, `rate_3_hours_outcall`, `rate_dinner_date_outcall`, `rate_overnight_12_hours_outcall`, `rate_overnight_14_hours_outcall`, `rate_24_hours`, `rate_48_hours`, `rate_additional_days`, `rate_24_hours_outcall`, `rate_48_hours_outcall`, `rate_additional_days_outcall`, `services`, `created_at`, `updated_at`, `url`) VALUES
+(16, NULL, 'a1234', '<p>aasdfasdfas sa as fas fsd fas aas f</p>\r\n<p>as</p>\r\n<p>df</p>\r\n<p>asdf</p>\r\n<p>as</p>\r\n<p>f</p>\r\n<p>asdf</p>\r\n<p>xxxllll</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-06-02 12:53:47', '2017-06-02 13:13:52', NULL),
+(17, NULL, 'test8', '<p>asdf asdf as f</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-06-06 10:40:53', '2017-06-06 10:40:53', NULL),
+(18, NULL, 'aasdfasf', '<p>&nbsp;i\'m her own words</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-06-07 12:15:27', '2017-06-07 12:51:30', 'zzz'),
+(19, 1, 'test10', '<p>testare</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-06-07 13:50:07', '2017-06-07 13:50:07', 'test10'),
+(20, 1, 'test11', '<p>test11</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-06-07 13:52:49', '2017-06-07 13:52:49', 'test11'),
+(21, 1, 'test12', '<p>test12</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-06-07 14:00:52', '2017-06-07 14:00:52', 'test12');
 
 -- --------------------------------------------------------
 
 --
--- Structura de tabel pentru tabelul `images`
+-- Table structure for table `images`
 --
 
 CREATE TABLE `images` (
   `id` int(10) UNSIGNED NOT NULL,
   `girl_id` int(10) UNSIGNED NOT NULL,
-  `url` varchar(200) DEFAULT NULL,
+  `name` varchar(200) DEFAULT NULL,
   `created_at` varchar(20) DEFAULT NULL,
   `updated_at` varchar(20) DEFAULT NULL,
   `featured` tinyint(1) UNSIGNED ZEROFILL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Salvarea datelor din tabel `images`
+-- Dumping data for table `images`
 --
 
-INSERT INTO `images` (`id`, `girl_id`, `url`, `created_at`, `updated_at`, `featured`) VALUES
-(1, 4, 'media/original/isabelle320170528055229.jpg', '2017-05-28 17:52:29', '2017-05-28 17:52:29', NULL),
-(2, 4, 'media/original/isabelle520170528055229.jpg', '2017-05-28 17:52:29', '2017-05-28 17:52:29', NULL),
-(3, 4, 'media/original/isabelle620170528055229.jpg', '2017-05-28 17:52:30', '2017-05-28 17:52:30', NULL),
-(4, 8, 'media/original/transport20170530122409.jpg', '2017-05-30 12:24:09', '2017-05-30 12:24:09', NULL),
-(5, 8, 'media/original/norvin120170530122409.jpg', '2017-05-30 12:24:09', '2017-05-30 12:24:09', NULL),
-(6, 9, 'media/original/tracking.jpg', '2017-05-30 13:20:53', '2017-05-30 13:20:53', NULL),
-(7, 9, 'media/original/calitate.jpg', '2017-05-30 13:20:53', '2017-05-30 13:20:53', NULL),
-(8, 10, 'media/original/planograma20170531122337.jpg', '2017-05-31 12:23:38', '2017-05-31 12:23:38', NULL),
-(9, 10, 'media/original/220170531122337.jpg', '2017-05-31 12:23:38', '2017-05-31 12:23:38', NULL);
+INSERT INTO `images` (`id`, `girl_id`, `name`, `created_at`, `updated_at`, `featured`) VALUES
+(69, 16, 'dog1-Copy.jpg', '2017-06-04 10:36:18', '2017-06-04 10:36:18', NULL),
+(70, 16, 'dog120170604103615.jpg', '2017-06-04 10:36:18', '2017-06-04 10:36:18', NULL),
+(72, 16, 'HappyOldMan.jpg', '2017-06-04 10:36:18', '2017-06-04 10:36:18', NULL),
+(73, 17, 'reducere20170606104052.jpg', '2017-06-06 10:40:53', '2017-06-06 10:40:53', NULL),
+(74, 17, 'nutraline1520170606104052.jpg', '2017-06-06 10:40:53', '2017-06-06 10:40:53', NULL),
+(75, 18, 'reducere20170607121527.jpg', '2017-06-07 12:15:27', '2017-06-07 12:15:27', NULL),
+(76, 18, 'nutraline1520170607121527.jpg', '2017-06-07 12:15:27', '2017-06-07 12:15:27', NULL),
+(77, 18, 'maxi15.jpg', '2017-06-07 12:15:27', '2017-06-07 12:15:27', NULL),
+(78, 19, 'inghetata-prezentare.jpg', '2017-06-07 13:50:07', '2017-06-07 13:50:07', NULL),
+(79, 19, 'gelaterie.jpg', '2017-06-07 13:50:07', '2017-06-07 13:50:07', NULL),
+(80, 19, 'PETEXPERTLITIERAHAPPYBASICGREY.png', '2017-06-07 13:50:07', '2017-06-07 13:50:07', NULL),
+(81, 20, 'norvin1.jpg', '2017-06-07 13:52:49', '2017-06-07 13:52:49', NULL),
+(82, 20, 'royal-bannerx2.jpg', '2017-06-07 13:52:49', '2017-06-07 13:52:49', NULL),
+(83, 20, 'belcando-bannerx.jpg', '2017-06-07 13:52:49', '2017-06-07 13:52:49', NULL),
+(84, 20, 'junior.jpg', '2017-06-07 13:52:49', '2017-06-07 13:52:49', NULL),
+(86, 20, 'ice-cream-month--758e32da6500562720170607015443.jpg', '2017-06-07 13:54:44', '2017-06-07 13:54:44', NULL),
+(87, 21, 'ice-cream-month--758e32da6500562720170607020051.jpg', '2017-06-07 14:00:52', '2017-06-07 14:00:52', NULL),
+(88, 21, 'maxi1520170607020051.jpg', '2017-06-07 14:00:52', '2017-06-07 14:00:52', NULL),
+(89, 21, '12.png', '2017-06-07 14:00:52', '2017-06-07 14:00:52', NULL),
+(90, 21, 'gelaterie20170607020051.jpg', '2017-06-07 14:00:52', '2017-06-07 14:00:52', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Structura de tabel pentru tabelul `posts`
+-- Table structure for table `posts`
 --
 
 CREATE TABLE `posts` (
@@ -140,7 +149,7 @@ CREATE TABLE `posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Salvarea datelor din tabel `posts`
+-- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`id`, `name`, `content`, `created_at`, `updated_at`) VALUES
@@ -153,7 +162,7 @@ INSERT INTO `posts` (`id`, `name`, `content`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structura de tabel pentru tabelul `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -162,7 +171,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Salvarea datelor din tabel `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`) VALUES
@@ -173,7 +182,7 @@ INSERT INTO `roles` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structura de tabel pentru tabelul `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -189,13 +198,11 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Salvarea datelor din tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `created_at`, `updated_at`, `remember_token`, `role_id`, `is_active`) VALUES
 (1, 'costicanu', 'costicanu@yahoo.com', '$2y$10$rAcSHj.8mRM4Y9XiU66TGezvnR1wJWizs1ua0.YE/R2wWVBxItSCe', '2017-05-07 15:04:50', '2017-05-16 13:16:39', 'CPKhckaXAM9LdYC0tobQQxgupAEsO3r9t1rqDYOV9ZLfDCrpE72GtMWKV1Cq', 2, 1),
-(4, 'test', NULL, NULL, '2017-05-11 13:22:59', '2017-05-11 13:22:59', NULL, 2, NULL),
-(6, 'test', NULL, NULL, '2017-05-11 13:23:55', '2017-05-11 13:23:55', NULL, 2, NULL),
 (7, 'test', NULL, NULL, '2017-05-11 13:23:59', '2017-05-11 13:23:59', NULL, 2, NULL),
 (8, 'test', NULL, NULL, '2017-05-11 13:24:16', '2017-05-11 13:24:16', NULL, 2, NULL),
 (11, 'test', NULL, NULL, '2017-05-11 13:25:54', '2017-05-11 13:25:54', NULL, 2, NULL),
@@ -215,7 +222,8 @@ ALTER TABLE `girls`
 -- Indexes for table `images`
 --
 ALTER TABLE `images`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `girl_id` (`girl_id`);
 
 --
 -- Indexes for table `posts`
@@ -244,12 +252,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `girls`
 --
 ALTER TABLE `girls`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 --
 -- AUTO_INCREMENT for table `posts`
 --
@@ -261,14 +269,21 @@ ALTER TABLE `posts`
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
--- Restrictii pentru tabele sterse
+-- Constraints for dumped tables
 --
 
 --
--- Restrictii pentru tabele `users`
+-- Constraints for table `images`
+--
+ALTER TABLE `images`
+  ADD CONSTRAINT `girl_id` FOREIGN KEY (`girl_id`) REFERENCES `girls` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `user_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON UPDATE CASCADE;
+SET FOREIGN_KEY_CHECKS=1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

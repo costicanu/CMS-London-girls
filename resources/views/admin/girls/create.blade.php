@@ -18,12 +18,17 @@
 
 
         <div class="row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <label for="name">Name</label>
                 <input type="text" name="name" value="{{ old('name') }}" class="form-control"/>
             </div>
 
-        <div class="form-group col-lg-6">
+            <div class="form-group col-md-4">
+                <label for="url">Url</label>
+                <input type="text" name="url" value="{{ old('url') }}" class="form-control" required="true"/>
+            </div>
+
+        <div class="form-group col-lg-4">
             <label for="images">Images</label>
             <input type="file" name="images[]" accept="image/*" multiple>
         </div>

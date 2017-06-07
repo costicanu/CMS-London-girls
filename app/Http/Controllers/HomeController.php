@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Girl;
 
 class HomeController extends Controller
 {
@@ -26,8 +27,10 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function girl(){
-        return view('frontend.girl');
+    public function girl($url_of_girl){
+        $girl=Girl::where('url',$url_of_girl)->first();
+
+        return view('frontend.girl',['girl'=>$girl]);
     }
 
 }
