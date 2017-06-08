@@ -1,6 +1,6 @@
 <?php
 
-
+// folklore config file
 
 return array(
 

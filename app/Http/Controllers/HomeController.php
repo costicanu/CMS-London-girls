@@ -27,10 +27,14 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function girl($url_of_girl){
-        $girl=Girl::where('url',$url_of_girl)->first();
+    public function girl($url_of_girl)
+    {
+        $girl = Girl::where('url', $url_of_girl)->first();
+        if (!$girl) {
+            return view('frontend.404', ['girl' => $girl]);
+        }
 
-        return view('frontend.girl',['girl'=>$girl]);
+        return view('frontend.girl', ['girl' => $girl]);
     }
 
 }

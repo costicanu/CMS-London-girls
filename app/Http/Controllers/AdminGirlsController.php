@@ -53,7 +53,7 @@ class AdminGirlsController extends Controller
     {
         $this->validate($request, [
             'name' => "required|string|min:3",
-            'url'=> "required|string|max:255|unique:girls",
+            'url' => "required|string|max:255|unique:girls",
             'images' => "required",
             'images.*' => "image|mimes:jpg,jpeg,png,gif",
         ]);
@@ -61,11 +61,10 @@ class AdminGirlsController extends Controller
         $girl = new Girl();
         $girl->name = $request->name;
         $girl->own_words = $request->own_words;
-        $girl->is_active= $request->is_active;
-        if(!empty($request->url)) {
+        $girl->is_active = $request->is_active;
+        if (!empty($request->url)) {
             $girl->url = urlencode($request->url);
-        }
-        else {
+        } else {
             $girl->url = urlencode($request->name);
         }
 
@@ -75,7 +74,8 @@ class AdminGirlsController extends Controller
             $files = $_FILES;
             $imagesName = $this->uploadImages($files);
             $this->createThumbs($imagesName, 100, 100);
-            $this->createThumbs($imagesName, 440,660);
+            $this->createThumbs($imagesName, 440, 660, true);
+            $this->createThumbs($imagesName, 1100, 700);
 
 
         }
@@ -89,7 +89,7 @@ class AdminGirlsController extends Controller
     }
 
 
-    private function createThumbs($imagesName, $width, $height)
+    private function createThumbs($imagesName, $width, $height, $crop = false)
     {
         $thumbnail_location = 'media/thumbnails/' . $width . 'x' . $height . '/';
         if (!file_exists($thumbnail_location)) {
@@ -98,12 +98,13 @@ class AdminGirlsController extends Controller
         foreach ($imagesName as $eachImageName) {
             $image_location = 'media/original/' . $eachImageName;
             list($width_current, $height_current) = getimagesize($image_location);
-            if ($width_current <= $width || $height_current < $height) {   //don't resize
+            if ($width_current <= $width || $height_current < $height && $crop==false) {   //don't resize
                 Image::make($image_location, array())->save($thumbnail_location . $eachImageName);
             } else {           //resize
                 Image::make($image_location, array(
                     'width' => $width,
                     'height' => $height,
+                    'crop' => $crop
                 ))->save($thumbnail_location . $eachImageName);
 
             }
@@ -173,12 +174,11 @@ class AdminGirlsController extends Controller
         $girl = Girl::findOrFail($id);
         $girl->name = $request->name;
         $girl->own_words = $request->own_words;
-        $girl->is_active= $request->is_active;
-        if(!empty($request->url)) {
+        $girl->is_active = $request->is_active;
+        if (!empty($request->url)) {
 
             $girl->url = urlencode($request->url);
-        }
-        else {
+        } else {
             $girl->url = urlencode($request->name);
         }
 
@@ -192,7 +192,7 @@ class AdminGirlsController extends Controller
             $files = $_FILES;
             $imagesName = $this->uploadImages($files);
             $this->createThumbs($imagesName, 100, 100);
-            $this->createThumbs($imagesName, 440,660);
+            $this->createThumbs($imagesName, 440, 660);
 
             foreach ($imagesName as $eachImage) {
                 $girl->images()->save(new ImageOfGirls(['name' => $eachImage]));
@@ -224,7 +224,7 @@ class AdminGirlsController extends Controller
     {
         $image = ImageOfGirls::where('id', $id)->first();
         if ($image) {
-             $image->delete();
+            $image->delete();
             return 1;
         }
 
