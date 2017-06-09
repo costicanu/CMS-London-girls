@@ -116,3 +116,16 @@
 .navbar-brand{
 	padding-top:3px;
 }
+
+.tabbing{
+	padding:15px 0;
+}
+
+.page-header{
+	color:#696969;
+	border-bottom:none;
+	margin-top:20px;
+	margin-bottom:0;
+	text-align:center;
+
+}

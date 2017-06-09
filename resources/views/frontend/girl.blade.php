@@ -165,6 +165,153 @@
     </script>
     <!-- end of Girl Gallery -->
 
+    <!-- tabs -->
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/mTab-style.css')}}"/>
+    <script type="text/javascript" src="{{URL::asset('js/jquery-mTab-min.js')}}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            $('.tabbing').mTab({
+                navigation: ".tabNav"
+                , container: ".tabContainer"
+                , activeTab: 1
+                , activeClass: "active"
+                , scrollOffset: true
+                , accordScreen: 768
+                , toggleClose: true
+                , animation: false
+                , openWithUrl: true
+                , callbackonclick: function () {
+                }
+                , callback: function () {
+                }
+            });
+
+        });
+
+    </script>
+
+    <!-- end of Tabs -->
+
+
 @stop
 
 
+@section('content')
+    <!-- Marketing Icons Section -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                {{ucfirst($girl->name)}}
+            </h1>
+            <!-- div used as a holder for the coverflow -->
+            <div id="myDiv"></div>
+
+            <!-- carousel data -->
+            <div id="coverflowData" style="display: none;">
+
+                <!-- category  -->
+                <div data-cat="Category one">
+
+                    @foreach($girl->images as $image)
+                        <ul>
+                            <li data-url="{{URL::asset('/media/thumbnails/1100x700/'.$image->name)}}" data-width="1100"
+                                data-height="700"></li>
+                            <li data-thumbnail-path="{{URL::asset('/media/thumbnails/440x660/'.$image->name)}}"></li>
+                            <li data-thumbnail-text="" data-thumbnail-text-title-offset="43"
+                                data-thumbnail-text-offset-top="16"
+                                data-thumbnail-text-offset-bottom="7">
+                                <p class="largeLabel">{{$girl->name}}</p>
+                                <p class="smallLabel">{{str_limit(strip_tags($girl->own_words),25)}}</p>
+                            </li>
+                            <li data-info="">
+                                <p class="mediaDescriptionHeader">fullsize title</p>
+                                <p class="mediaDescriptionText">
+                                    Full size description.
+                                </p>
+                            </li>
+                        </ul>
+
+                    @endforeach
+
+                </div>
+                <!-- end  -->
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="col-lg-12">
+            <div class="tabbing">
+                <ul class="tabNav">
+                    <li><a href="#tab-book-me">Book Me</a></li>
+                    <li><a href="#tab-about-me">About Me</a></li>
+                    <li><a href="#tab-details">Details</a></li>
+                    <li><a href="#tab-more-details">More Details</a></li>
+                    <li><a href="#tab-services">Services</a></li>
+                    <li><a href="#tab-rates">Rates</a></li>
+                    <li><a href="#tab-claudias-view">Claudia's View</a></li>
+                    <li><a href="#tab-interview">Interview</a></li>
+                    <li><a href="#tab-reviews">Reviews</a></li>
+                </ul>
+                <div class="tabContainer">
+                    <div class="tabContent" id="tab-book-me">
+                        <h3>Tab Content 1</h3>
+                        <p>Lorem ipsum dolor sit amet, prompta molestie ad eam, ea commodo voluptaria referrentur pri, dicant consul est et. Corpora detraxit inciderint eam no, nonumy denique his id. Utroque percipit accusata usu eu, eu choro offendit consetetur nec. Cum at purto timeam cotidieque.</p>
+                        <p>At sit modus posse porro, duis doming interesset id pro. Vis vero ignota cetero ex, mentitum vituperatoribus quo id, eam eu modo sententiae. Cu iudico rationibus eum, ne duo elit nostrum constituam. Mea ea atqui minim. Eros primis persius eu sed. Usu cu aperiri utroque. An per voluptua phaedrum percipitur, ne ius scribentur dissentiunt. Lobortis principes est te, inermis placerat hendrerit mea ne, duo dicat nonumy sententiae an. An mel eius noster, dolore vituperata efficiendi pro at. Electram incorrupte mea at, percipit torquatos instructior sed eu, unum dolores ne vel. Id has tacimates intellegam, putent recusabo corrumpit nam ea.</p>
+                    </div>
+                    <div class="tabContent" id="tab-about-me">
+                        <h3>Tab Content 2</h3>
+                        <p>At sit modus posse porro, duis doming interesset id pro. Vis vero ignota cetero ex, mentitum vituperatoribus quo id, eam eu modo sententiae. Cu iudico rationibus eum, ne duo elit nostrum constituam. Mea ea atqui minim. Eros primis persius eu sed. Usu cu aperiri utroque. An per voluptua phaedrum percipitur, ne ius scribentur dissentiunt. Lobortis principes est te, inermis placerat hendrerit mea ne, duo dicat nonumy sententiae an. An mel eius noster, dolore vituperata efficiendi pro at.</p>
+                        <p>Lorem ipsum dolor sit amet, prompta molestie ad eam, ea commodo voluptaria referrentur pri, dicant consul est et. Corpora detraxit inciderint eam no, nonumy denique his id. Utroque percipit accusata usu eu, eu choro offendit consetetur nec. Cum at purto timeam cotidieque.</p>
+                    </div>
+                    <div class="tabContent" id="tab-details">
+                        <h3>Tab Content 3</h3>
+                        <p>Lorem ipsum dolor sit amet, prompta molestie ad eam, ea commodo voluptaria referrentur pri, dicant consul est et. Corpora detraxit inciderint eam no, nonumy denique his id. Utroque percipit accusata usu eu, eu choro offendit consetetur nec. Cum at purto timeam cotidieque.</p>
+                        <p>Ea oblique ceteros vix, ex quo paulo labore maiorum, falli detraxit ad pri. Ex sea populo tacimates definitionem, et mel sale erant, has ad probatus adipiscing. Mea cibo sententiae cotidieque ea. In viris quodsi lucilius vim, purto rebum graeco sea ad. In cum reque suscipit, moderatius philosophia sed ut. Denique platonem scribentur sed no, est natum electram abhorreant ei. Vis et possim quaerendum, sed primis nominavi ad. Nec munere lucilius ea, vel in latine erroribus, ius te porro regione. Te sed tollit tamquam invenire. Ad quo nihil virtute ancillae, pri ad idque singulis, iuvaret molestie dissentias ut cum.</p>
+                    </div>
+                    <div class="tabContent" id="tab-more-details">
+                        <h3>Tab Content 4</h3>
+                        <p>Ea oblique ceteros vix, ex quo paulo labore maiorum, falli detraxit ad pri. Ex sea populo tacimates definitionem, et mel sale erant, has ad probatus adipiscing. Mea cibo sententiae cotidieque ea. In viris quodsi lucilius vim, purto rebum graeco sea ad.</p>
+                        <p> In cum reque suscipit, moderatius philosophia sed ut. Denique platonem scribentur sed no, est natum electram abhorreant ei. Vis et possim quaerendum, sed primis nominavi ad. Nec munere lucilius ea, vel in latine erroribus, ius te porro regione. Te sed tollit tamquam invenire. Ad quo nihil virtute ancillae, pri ad idque singulis, iuvaret molestie dissentias ut cum.</p>
+                    </div>
+                    <div class="tabContent" id="tab-services">
+                        <h3>Tab Content 5</h3>
+                        <p>Lorem ipsum dolor sit amet, prompta molestie ad eam, ea commodo voluptaria referrentur pri, dicant consul est et. Corpora detraxit inciderint eam no, nonumy denique his id. Utroque percipit accusata usu eu, eu choro offendit consetetur nec. Cum at purto timeam cotidieque.</p>
+                        <p>At sit modus posse porro, duis doming interesset id pro. Vis vero ignota cetero ex, mentitum vituperatoribus quo id, eam eu modo sententiae. Cu iudico rationibus eum, ne duo elit nostrum constituam. Mea ea atqui minim. Eros primis persius eu sed. Usu cu aperiri utroque. An per voluptua phaedrum percipitur, ne ius scribentur dissentiunt. Lobortis principes est te, inermis placerat hendrerit mea ne, duo dicat nonumy sententiae an. An mel eius noster, dolore vituperata efficiendi pro at. Electram incorrupte mea at, percipit torquatos instructior sed eu, unum dolores ne vel. Id has tacimates intellegam, putent recusabo corrumpit nam ea.</p>
+                    </div>
+                    <div class="tabContent" id="tab-rates">
+                        <h3>Tab Content 6</h3>
+                        <p>Lorem ipsum dolor sit amet, prompta molestie ad eam, ea commodo voluptaria referrentur pri, dicant consul est et. Corpora detraxit inciderint eam no, nonumy denique his id. Utroque percipit accusata usu eu, eu choro offendit consetetur nec. Cum at purto timeam cotidieque.</p>
+                        <p>At sit modus posse porro, duis doming interesset id pro. Vis vero ignota cetero ex, mentitum vituperatoribus quo id, eam eu modo sententiae. Cu iudico rationibus eum, ne duo elit nostrum constituam. Mea ea atqui minim. Eros primis persius eu sed. Usu cu aperiri utroque. An per voluptua phaedrum percipitur, ne ius scribentur dissentiunt. Lobortis principes est te, inermis placerat hendrerit mea ne, duo dicat nonumy sententiae an. An mel eius noster, dolore vituperata efficiendi pro at. Electram incorrupte mea at, percipit torquatos instructior sed eu, unum dolores ne vel. Id has tacimates intellegam, putent recusabo corrumpit nam ea.</p>
+                    </div>
+                    <div class="tabContent" id="tab-claudias-view">
+                        <h3>Tab Content 7</h3>
+                        <p>Lorem ipsum dolor sit amet, prompta molestie ad eam, ea commodo voluptaria referrentur pri, dicant consul est et. Corpora detraxit inciderint eam no, nonumy denique his id. Utroque percipit accusata usu eu, eu choro offendit consetetur nec. Cum at purto timeam cotidieque.</p>
+                        <p>At sit modus posse porro, duis doming interesset id pro. Vis vero ignota cetero ex, mentitum vituperatoribus quo id, eam eu modo sententiae. Cu iudico rationibus eum, ne duo elit nostrum constituam. Mea ea atqui minim. Eros primis persius eu sed. Usu cu aperiri utroque. An per voluptua phaedrum percipitur, ne ius scribentur dissentiunt. Lobortis principes est te, inermis placerat hendrerit mea ne, duo dicat nonumy sententiae an. An mel eius noster, dolore vituperata efficiendi pro at. Electram incorrupte mea at, percipit torquatos instructior sed eu, unum dolores ne vel. Id has tacimates intellegam, putent recusabo corrumpit nam ea.</p>
+                    </div>
+                    <div class="tabContent" id="tab-interview">
+                        <h3>Tab Content 8</h3>
+                        <p>Lorem ipsum dolor sit amet, prompta molestie ad eam, ea commodo voluptaria referrentur pri, dicant consul est et. Corpora detraxit inciderint eam no, nonumy denique his id. Utroque percipit accusata usu eu, eu choro offendit consetetur nec. Cum at purto timeam cotidieque.</p>
+                        <p>At sit modus posse porro, duis doming interesset id pro. Vis vero ignota cetero ex, mentitum vituperatoribus quo id, eam eu modo sententiae. Cu iudico rationibus eum, ne duo elit nostrum constituam. Mea ea atqui minim. Eros primis persius eu sed. Usu cu aperiri utroque. An per voluptua phaedrum percipitur, ne ius scribentur dissentiunt. Lobortis principes est te, inermis placerat hendrerit mea ne, duo dicat nonumy sententiae an. An mel eius noster, dolore vituperata efficiendi pro at. Electram incorrupte mea at, percipit torquatos instructior sed eu, unum dolores ne vel. Id has tacimates intellegam, putent recusabo corrumpit nam ea.</p>
+                    </div>
+                    <div class="tabContent" id="tab-reviews">
+                        <h3>Tab Content 9</h3>
+                        <p>Lorem ipsum dolor sit amet, prompta molestie ad eam, ea commodo voluptaria referrentur pri, dicant consul est et. Corpora detraxit inciderint eam no, nonumy denique his id. Utroque percipit accusata usu eu, eu choro offendit consetetur nec. Cum at purto timeam cotidieque.</p>
+                        <p>At sit modus posse porro, duis doming interesset id pro. Vis vero ignota cetero ex, mentitum vituperatoribus quo id, eam eu modo sententiae. Cu iudico rationibus eum, ne duo elit nostrum constituam. Mea ea atqui minim. Eros primis persius eu sed. Usu cu aperiri utroque. An per voluptua phaedrum percipitur, ne ius scribentur dissentiunt. Lobortis principes est te, inermis placerat hendrerit mea ne, duo dicat nonumy sententiae an. An mel eius noster, dolore vituperata efficiendi pro at. Electram incorrupte mea at, percipit torquatos instructior sed eu, unum dolores ne vel. Id has tacimates intellegam, putent recusabo corrumpit nam ea.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- /.row -->
+
+
+
+
+@stop
