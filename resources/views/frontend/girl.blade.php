@@ -69,9 +69,9 @@
                 showThumbnailBoxShadow: "yes",
                 thumbnailBoxShadowCss: "0px 2px 2px #555555",
                 showReflection: "yes",
-                reflectionHeight: 60,
+                reflectionHeight: 85,
                 reflectionDistance: 0,
-                reflectionOpacity: .2,
+                reflectionOpacity: .4,
 
                 //scrollbar settings
                 showScrollbar: "yes",

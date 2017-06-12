@@ -8,7 +8,7 @@ body {
 }
 
 .img-portfolio {
-    margin-bottom: 30px;
+    margin-bottom:0;
 }
 
 .img-hover:hover {
@@ -18,8 +18,9 @@ body {
 /* Home Page Carousel */
 
 header.carousel {
-    height: 92%;
-    padding-top:15px;
+    padding-top:25px;
+    padding-bottom:40px;
+    background-color: #cccccc;
 }
 
 header.carousel .item,

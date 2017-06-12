@@ -25,7 +25,7 @@
             <th>Location</th>
             <th>Created At</th>
             <th>Age</th>
-            <th>Nationality</th>
+            <th>Preview</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
@@ -44,7 +44,9 @@
                     <td>{{$girl->location}}</td>
                     <td>{{$girl->created_at?$girl->created_at->diffForHumans():''}}</td>
                     <td>{{$girl->age}}</td>
-                    <td>{{$girl->nationality}}</td>
+                    <td>{{$girl->nationality}}
+                        <a target="_blank" href="{{action('HomeController@girl',['url'=>$girl->url])}}">Preview</a>
+                    </td>
 
                     <td>
                         <a href="{{ action('AdminGirlsController@edit',['id'=>$girl->id]) }}"
