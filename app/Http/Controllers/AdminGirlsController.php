@@ -98,7 +98,7 @@ class AdminGirlsController extends Controller
         foreach ($imagesName as $eachImageName) {
             $image_location = 'media/original/' . $eachImageName;
             list($width_current, $height_current) = getimagesize($image_location);
-            if ($width_current <= $width || $height_current < $height && $crop==false) {   //don't resize
+            if ($width_current <= $width || $height_current < $height && $crop == false) {   //don't resize
                 Image::make($image_location, array())->save($thumbnail_location . $eachImageName);
             } else {           //resize
                 Image::make($image_location, array(
@@ -197,6 +197,15 @@ class AdminGirlsController extends Controller
             foreach ($imagesName as $eachImage) {
                 $girl->images()->save(new ImageOfGirls(['name' => $eachImage]));
             }
+
+        }
+
+        //set images order
+        foreach ($request->images_order_id as $each_id) {
+            $order_text_field_value = 'order_' . $each_id;
+            $image = ImageOfGirls::where('id', $each_id)->first();
+            $image->order = $request->$order_text_field_value;
+            $image->save();
 
         }
 

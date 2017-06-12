@@ -62,7 +62,8 @@
                                     <input type="checkbox" name="main_image" value="{{$image->id}}"/>
                                 </td>
                                 <td>
-                                    <input type="textfield" name="order_{{$image->id}}"/>
+                                    <input type="hidden" name="images_order_id[]" value="{{$image->id}}" />
+                                    <input type="textfield" name="order_{{$image->id}}" value="{{old('order',$image->order)}}"/>
                                 </td>
                                 <td>
 
