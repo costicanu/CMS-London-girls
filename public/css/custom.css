@@ -168,3 +168,14 @@ h4{
 	color: #666666;
 }
 
+
+.mResTabNavTab{
+    float: left;
+    clear:both;
+}
+
+.tabContainer .tabContent {
+    background-color: #efefef;
+    border: 1px solid #ccc;
+    padding: 20px;
+}

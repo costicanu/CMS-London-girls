@@ -245,8 +245,8 @@
 
 
         <div class="col-lg-12">
-            <div class="tabbing">
-                <ul class="tabNav">
+            <div class="tabbing col-lg-12">
+                <ul class="tabNav col-lg-2">
                     <li><a href="#tab-book-me">Book Me</a></li>
                     <li><a href="#tab-about-me">About Me</a></li>
                     <li><a href="#tab-details">Details</a></li>
@@ -257,7 +257,7 @@
                     <li><a href="#tab-interview">Interview</a></li>
                     <li><a href="#tab-reviews">Reviews</a></li>
                 </ul>
-                <div class="tabContainer">
+                <div class="tabContainer col-lg-10">
                     <div class="tabContent" id="tab-book-me">
                         <h3>Tab Content 1</h3>
                         <p>Lorem ipsum dolor sit amet, prompta molestie ad eam, ea commodo voluptaria referrentur pri, dicant consul est et. Corpora detraxit inciderint eam no, nonumy denique his id. Utroque percipit accusata usu eu, eu choro offendit consetetur nec. Cum at purto timeam cotidieque.</p>
