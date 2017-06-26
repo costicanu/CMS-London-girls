@@ -55,14 +55,16 @@
 <!-- Page Content -->
 <div class="container">
 
-    @yield('content')
-    <!-- Footer -->
-    @include('layouts.frontend.footer')
+@yield('content')
 
 </div>
 <!-- /.container -->
 
+@yield('after_content')
 
+
+<!-- Footer -->
+@include('layouts.frontend.footer')
 </body>
 
 </html>

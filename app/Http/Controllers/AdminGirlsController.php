@@ -204,6 +204,9 @@ class AdminGirlsController extends Controller
         foreach ($request->images_order_id as $each_id) {
             $order_text_field_value = 'order_' . $each_id;
             $image = ImageOfGirls::where('id', $each_id)->first();
+            if(empty($request->$order_text_field_value)){
+                continue;
+            }
             $image->order = $request->$order_text_field_value;
             $image->save();
 

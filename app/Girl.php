@@ -14,4 +14,9 @@ class Girl extends Model
         return $this->hasMany('App\ImageOfGirls')->orderBy('order','ASC');
     }
 
+    public function categories(){
+        return $this->hasMany('App\Category');
+    }
+
+
 }

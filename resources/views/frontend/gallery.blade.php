@@ -2,197 +2,205 @@
 
 @section('extraScripts')
 
-    <!-- Girl Gallery -->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('js/girl_gallery/load/skin_modern_silver.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('js/girl_gallery/load/html_content.css')}}"/>
-    <script type="text/javascript" src="{{URL::asset('js/girl_gallery/java/FWDRoyal3DCoverflow.js')}}"></script>
-    <script type="text/javascript">
-        FWDR3DCovUtils.onReady(function () {
-            var coverflow = new FWDRoyal3DCoverflow({
-                //required settings
-                coverflowHolderDivId: "myDiv",
-                coverflowDataListDivId: "coverflowData",
-                displayType: "fluidwidth",
-                autoScale: "yes",
-                coverflowWidth: 940,
-                coverflowHeight: 730,
-                mainFolderPath: "load",
-                skinPath: "../../js/girl_gallery/load/skin_modern_silver",
+    <!-- Mansonry Gallery -->
 
-                //main settings
-                backgroundColor: "#DDDDDD",
-                backgroundImagePath: "{{URL::asset('js/girl_gallery/load/skin_modern_silver/main_skin/background.jpg')}}",
-                thumbnailsBackgroundImagePath: "",
-                scrollbarBackgroundImagePath: "{{URL::asset('js/girl_gallery/load/skin_modern_silver/main_skin/scrollbarBackground.jpg')}}",
-                backgroundRepeat: "repeat-x",
-                showDisplay2DAlways: "no",
-                coverflowStartPosition: "center",
-                numberOfThumbnailsToDisplayLeftAndRight: "2",
-                slideshowDelay: 3000,
-                autoplay: "yes",
-                showPrevButton: "yes",
-                showNextButton: "yes",
-                showSlideshowButton: "yes",
-                disableNextAndPrevButtonsOnMobile: "no",
-                controlsMaxWidth: 940,
-                controlsHeight: 31,
-                showLargeNextAndPrevButtons: "yes",
-                largeNextAndPrevButtonsOffest: 15,
-                slideshowTimerColor: "#777777",
-                showContextMenu: "no",
-                addKeyboardSupport: "yes",
-                useDragAndSwipe: "yes",
-                fluidWidthZIndex: 0,
+    <!-- end of Masonry Gallery -->
+    <style type="text/css">
+        .button {
+            display: inline-block;
+            padding: 0.5em 1.0em;
+            background: #EEE;
+            border: none;
+            border-radius: 7px;
+            background-image: linear-gradient( to bottom, hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.2) );
+            color: #222;
+            font-family: sans-serif;
+            font-size: 16px;
+            text-shadow: 0 1px white;
+            cursor: pointer;
+        }
 
-                //thumbnail settings
-                thumbnailWidth: 440,
-                thumbnailHeight: 660,
-                thumbnailXOffset3D: 80,
-                thumbnailXSpace3D: 78,
-                thumbnailZOffset3D: 200,
-                thumbnailZSpace3D: 93,
-                thumbnailYAngle3D: 0,
-                thumbnailXOffset2D: 20,
-                thumbnailXSpace2D: 30,
-                thumbnailBorderSize: 10,
-                thumbnailBackgroundColor: "#666666",
-                thumbnailBorderColor1: "#fcfdfd",
-                thumbnailBorderColor2: "#e4e4e4",
-                transparentImages: "no",
-                maxNumberOfThumbnailsOnMobile: 13,
-                showThumbnailsGradient: "yes",
-                showThumbnailsHtmlContent: "no",
-                textBackgroundColor: "#333333",
-                textBackgroundOpacity: .7,
-                showText: "yes",
-                showTextBackgroundImage: "yes",
-                showThumbnailBoxShadow: "yes",
-                thumbnailBoxShadowCss: "0px 2px 2px #555555",
-                showReflection: "yes",
-                reflectionHeight: 85,
-                reflectionDistance: 0,
-                reflectionOpacity: .4,
+        .button:hover {
+            background-color: #8CF;
+            text-shadow: 0 1px hsla(0, 0%, 100%, 0.5);
+            color: #222;
+        }
 
-                //scrollbar settings
-                showScrollbar: "yes",
-                disableScrollbarOnMobile: "yes",
-                enableMouseWheelScroll: "no",
-                scrollbarHandlerWidth: 300,
-                scrollbarTextColorNormal: "#777777",
-                scrollbarTextColorSelected: "#000000",
+        .button:active,
+        .button.is-checked {
+            background-color: #28F;
+        }
 
-                //combobox settings
-                showComboBox: "no",
-                startAtCategory: 1,
-                selectLabel: "SELECT CATEGORIES",
-                allCategoriesLabel: "All Categories",
-                showAllCategories: "no",
-                comboBoxPosition: "topright",
-                selectorBackgroundNormalColor1: "#fcfdfd",
-                selectorBackgroundNormalColor2: "#e4e4e4",
-                selectorBackgroundSelectedColor1: "#a7a7a7",
-                selectorBackgroundSelectedColor2: "#8e8e8e",
-                selectorTextNormalColor: "#8b8b8b",
-                selectorTextSelectedColor: "#FFFFFF",
-                buttonBackgroundNormalColor1: "#e7e7e7",
-                buttonBackgroundNormalColor2: "#e7e7e7",
-                buttonBackgroundSelectedColor1: "#a7a7a7",
-                buttonBackgroundSelectedColor2: "#8e8e8e",
-                buttonTextNormalColor: "#000000",
-                buttonTextSelectedColor: "#FFFFFF",
-                comboBoxShadowColor: "#000000",
-                comboBoxHorizontalMargins: 12,
-                comboBoxVerticalMargins: 12,
-                comboBoxCornerRadius: 0,
+        .button.is-checked {
+            color: white;
+            text-shadow: 0 -1px hsla(0, 0%, 0%, 0.8);
+        }
 
-                //bullets navigation settings
-                showBulletsNavigation: "no",
-                bulletsBackgroundNormalColor1: "#fcfdfd",
-                bulletsBackgroundNormalColor2: "#e4e4e4",
-                bulletsBackgroundSelectedColor1: "#000000",
-                bulletsBackgroundSelectedColor2: "#666666",
-                bulletsShadow: "0px 0px 4px #888888",
-                bulletsNormalRadius: 7,
-                bulletsSelectedRadius: 8,
-                spaceBetweenBullets: 16,
-                bulletsOffset: 18,
+        .button:active {
+            box-shadow: inset 0 1px 10px hsla(0, 0%, 0%, 0.8);
+        }
 
-                //lightbox settings
-                buttonsAlignment: "in",
-                itemBoxShadow: "none",
-                descriptionWindowAnimationType: "opacity",
-                descriptionWindowPosition: "bottom",
-                slideShowAutoPlay: "yes",
-                addKeyboardSupport: "yes",
-                showCloseButton: "yes",
-                showShareButton: "yes",
-                showZoomButton: "no",
-                showSlideShowButton: "yes",
-                showSlideShowAnimation: "yes",
-                showNextAndPrevButtons: "yes",
-                showNextAndPrevButtonsOnMobile: "yes",
-                showDescriptionButton: "yes",
-                showDescriptionByDefault: "no",
-                videoShowFullScreenButton: "yes",
-                videoAutoPlay: "no",
-                nextVideoOrAudioAutoPlay: "yes",
-                videoLoop: "no",
-                audioAutoPlay: "no",
-                audioLoop: "no",
-                backgroundOpacity: .9,
-                descriptionWindowBackgroundOpacity: .95,
-                buttonsHideDelay: 3,
-                slideShowDelay: 4,
-                defaultItemWidth: 640,
-                defaultItemHeight: 480,
-                itemOffsetHeight: 50,
-                spaceBetweenButtons: 1,
-                buttonsOffsetIn: 2,
-                buttonsOffsetOut: 5,
-                itemBorderSize: 5,
-                itemBorderRadius: 0,
-                itemBackgroundColor: "#333333",
-                itemBorderColor1: "#fcfdfd",
-                itemBorderColor2: "#e4e4e4",
-                lightBoxBackgroundColor: "#000000",
-                descriptionWindowBackgroundColor: "#FFFFFF",
-                videoPosterBackgroundColor: "#0099FF",
-                videoControllerBackgroundColor: "#FFFFFF",
-                audioControllerBackgroundColor: "#FFFFFF",
-                timeColor: "#000000"
-            });
-        })
-    </script>
-    <!-- end of Girl Gallery -->
+        /* ---- button-group ---- */
 
-    <!-- tabs -->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/mTab-style.css')}}"/>
-    <script type="text/javascript" src="{{URL::asset('js/jquery-mTab-min.js')}}"></script>
+        .button-group {
+            margin-bottom: 20px;
+        }
+
+        .button-group:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .button-group .button {
+            float: left;
+            border-radius: 0;
+            margin-left: 0;
+            margin-right: 1px;
+        }
+
+        .button-group .button:first-child { border-radius: 0.5em 0 0 0.5em; }
+        .button-group .button:last-child { border-radius: 0 0.5em 0.5em 0; }
+
+        /* ---- isotope ---- */
+
+        .grid {
+            border: 1px solid #333;
+        }
+
+        /* clear fix */
+        .grid:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        /* ---- .element-item ---- */
+
+        .element-item {
+            position: relative;
+            float: left;
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            padding: 10px;
+            background: #888;
+            color: #262524;
+        }
+
+        .element-item > * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .element-item .name {
+            position: absolute;
+
+            left: 10px;
+            top: 60px;
+            text-transform: none;
+            letter-spacing: 0;
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        .element-item .symbol {
+            position: absolute;
+            left: 10px;
+            top: 0px;
+            font-size: 42px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .element-item .number {
+            position: absolute;
+            right: 8px;
+            top: 5px;
+        }
+
+        .element-item .weight {
+            position: absolute;
+            left: 10px;
+            top: 76px;
+            font-size: 12px;
+        }
+
+        .element-item.alkali          { background: #F00; background: hsl(   0, 100%, 50%); }
+        .element-item.alkaline-earth  { background: #F80; background: hsl(  36, 100%, 50%); }
+        .element-item.lanthanoid      { background: #FF0; background: hsl(  72, 100%, 50%); }
+        .element-item.actinoid        { background: #0F0; background: hsl( 108, 100%, 50%); }
+        .element-item.transition      { background: #0F8; background: hsl( 144, 100%, 50%); }
+        .element-item.post-transition { background: #0FF; background: hsl( 180, 100%, 50%); }
+        .element-item.metalloid       { background: #08F; background: hsl( 216, 100%, 50%); }
+        .element-item.diatomic        { background: #00F; background: hsl( 252, 100%, 50%); }
+        .element-item.halogen         { background: #F0F; background: hsl( 288, 100%, 50%); }
+        .element-item.noble-gas       { background: #F08; background: hsl( 324, 100%, 50%); }
+
+
+    </style>
+
+
 
     <script type="text/javascript">
-        $(document).ready(function (e) {
-            $('.tabbing').mTab({
-                navigation: ".tabNav"
-                , container: ".tabContainer"
-                , activeTab: 1
-                , activeClass: "active"
-                , scrollOffset: true
-                , accordScreen: 768
-                , toggleClose: true
-                , animation: false
-                , openWithUrl: true
-                , callbackonclick: function () {
-                }
-                , callback: function () {
-                }
-            });
+        // external js: isotope.pkgd.js
 
+
+        // init Isotope
+        var $grid = $('.grid').isotope({
+            itemSelector: '.element-item',
+            layoutMode: 'fitRows',
+            getSortData: {
+                name: '.name',
+                symbol: '.symbol',
+                number: '.number parseInt',
+                category: '[data-category]',
+                weight: function( itemElem ) {
+                    var weight = $( itemElem ).find('.weight').text();
+                    return parseFloat( weight.replace( /[\(\)]/g, '') );
+                }
+            }
         });
 
+        // filter functions
+        var filterFns = {
+            // show if number is greater than 50
+            numberGreaterThan50: function() {
+                var number = $(this).find('.number').text();
+                return parseInt( number, 10 ) > 50;
+            },
+            // show if name ends with -ium
+            ium: function() {
+                var name = $(this).find('.name').text();
+                return name.match( /ium$/ );
+            }
+        };
+
+        // bind filter button click
+        $('#filters').on( 'click', 'button', function() {
+            var filterValue = $( this ).attr('data-filter');
+            // use filterFn if matches value
+            filterValue = filterFns[ filterValue ] || filterValue;
+            $grid.isotope({ filter: filterValue });
+        });
+
+        // bind sort button click
+        $('#sorts').on( 'click', 'button', function() {
+            var sortByValue = $(this).attr('data-sort-by');
+            $grid.isotope({ sortBy: sortByValue });
+        });
+
+        // change is-checked class on buttons
+        $('.button-group').each( function( i, buttonGroup ) {
+            var $buttonGroup = $( buttonGroup );
+            $buttonGroup.on( 'click', 'button', function() {
+                $buttonGroup.find('.is-checked').removeClass('is-checked');
+                $( this ).addClass('is-checked');
+            });
+        });
+
+
     </script>
-
-    <!-- end of Tabs -->
-
 
 @stop
 
@@ -202,47 +210,144 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                {{ucfirst($girl->name)}}
+                {{ucfirst($cateogry->name)}}
             </h1>
-            <!-- div used as a holder for the coverflow -->
-            <div id="myDiv"></div>
 
-            <!-- carousel data -->
-            <div id="coverflowData" style="display: none;">
+            <h1>Isotope - filtering &amp; sorting</h1>
+            <h2>Filter</h2>
+            <div id="filters" class="button-group">  <button class="button is-checked" data-filter="*">show all</button>
+                <button class="button" data-filter=".metal">metal</button>
+                <button class="button" data-filter=".transition">transition</button>
+                <button class="button" data-filter=".alkali, .alkaline-earth">alkali and alkaline-earth</button>
+                <button class="button" data-filter=":not(.transition)">not transition</button>
+                <button class="button" data-filter=".metal:not(.transition)">metal but not transition</button>
+                <button class="button" data-filter="numberGreaterThan50">number > 50</button>
+                <button class="button" data-filter="ium">name ends with &ndash;ium</button>
+            </div>
 
-                <!-- category  -->
-                <div data-cat="Category one">
+            <h2>Sort</h2>
+            <div id="sorts" class="button-group">  <button class="button is-checked" data-sort-by="original-order">original order</button>
+                <button class="button" data-sort-by="name">name</button>
+                <button class="button" data-sort-by="symbol">symbol</button>
+                <button class="button" data-sort-by="number">number</button>
+                <button class="button" data-sort-by="weight">weight</button>
+                <button class="button" data-sort-by="category">category</button>
+            </div>
 
-                    @foreach($girl->images as $image)
-                        <ul>
-                            <li data-url="{{URL::asset('/media/thumbnails/1100x700/'.$image->name)}}" data-width="1100"
-                                data-height="700"></li>
-                            <li data-thumbnail-path="{{URL::asset('/media/thumbnails/440x660/'.$image->name)}}"></li>
-                            <li data-thumbnail-text="" data-thumbnail-text-title-offset="43"
-                                data-thumbnail-text-offset-top="16"
-                                data-thumbnail-text-offset-bottom="7">
-                                <p class="largeLabel">{{$girl->name}}</p>
-                                <p class="smallLabel">{{str_limit(strip_tags($girl->own_words),25)}}</p>
-                            </li>
-                            <li data-info="">
-                                <p class="mediaDescriptionHeader">fullsize title</p>
-                                <p class="mediaDescriptionText">
-                                    Full size description.
-                                </p>
-                            </li>
-                        </ul>
-
-                    @endforeach
-
+            <div class="grid">
+                <div class="element-item transition metal " data-category="transition">
+                    <h3 class="name">Mercury</h3>
+                    <p class="symbol">Hg</p>
+                    <p class="number">80</p>
+                    <p class="weight">200.59</p>
                 </div>
-                <!-- end  -->
-
-
+                <div class="element-item metalloid " data-category="metalloid">
+                    <h3 class="name">Tellurium</h3>
+                    <p class="symbol">Te</p>
+                    <p class="number">52</p>
+                    <p class="weight">127.6</p>
+                </div>
+                <div class="element-item post-transition metal " data-category="post-transition">
+                    <h3 class="name">Bismuth</h3>
+                    <p class="symbol">Bi</p>
+                    <p class="number">83</p>
+                    <p class="weight">208.980</p>
+                </div>
+                <div class="element-item post-transition metal " data-category="post-transition">
+                    <h3 class="name">Lead</h3>
+                    <p class="symbol">Pb</p>
+                    <p class="number">82</p>
+                    <p class="weight">207.2</p>
+                </div>
+                <div class="element-item transition metal " data-category="transition">
+                    <h3 class="name">Gold</h3>
+                    <p class="symbol">Au</p>
+                    <p class="number">79</p>
+                    <p class="weight">196.967</p>
+                </div>
+                <div class="element-item alkali metal " data-category="alkali">
+                    <h3 class="name">Potassium</h3>
+                    <p class="symbol">K</p>
+                    <p class="number">19</p>
+                    <p class="weight">39.0983</p>
+                </div>
+                <div class="element-item alkali metal " data-category="alkali">
+                    <h3 class="name">Sodium</h3>
+                    <p class="symbol">Na</p>
+                    <p class="number">11</p>
+                    <p class="weight">22.99</p>
+                </div>
+                <div class="element-item transition metal " data-category="transition">
+                    <h3 class="name">Cadmium</h3>
+                    <p class="symbol">Cd</p>
+                    <p class="number">48</p>
+                    <p class="weight">112.411</p>
+                </div>
+                <div class="element-item alkaline-earth metal " data-category="alkaline-earth">
+                    <h3 class="name">Calcium</h3>
+                    <p class="symbol">Ca</p>
+                    <p class="number">20</p>
+                    <p class="weight">40.078</p>
+                </div>
+                <div class="element-item transition metal " data-category="transition">
+                    <h3 class="name">Rhenium</h3>
+                    <p class="symbol">Re</p>
+                    <p class="number">75</p>
+                    <p class="weight">186.207</p>
+                </div>
+                <div class="element-item post-transition metal " data-category="post-transition">
+                    <h3 class="name">Thallium</h3>
+                    <p class="symbol">Tl</p>
+                    <p class="number">81</p>
+                    <p class="weight">204.383</p>
+                </div>
+                <div class="element-item metalloid " data-category="metalloid">
+                    <h3 class="name">Antimony</h3>
+                    <p class="symbol">Sb</p>
+                    <p class="number">51</p>
+                    <p class="weight">121.76</p>
+                </div>
+                <div class="element-item transition metal " data-category="transition">
+                    <h3 class="name">Cobalt</h3>
+                    <p class="symbol">Co</p>
+                    <p class="number">27</p>
+                    <p class="weight">58.933</p>
+                </div>
+                <div class="element-item lanthanoid metal inner-transition " data-category="lanthanoid">
+                    <h3 class="name">Ytterbium</h3>
+                    <p class="symbol">Yb</p>
+                    <p class="number">70</p>
+                    <p class="weight">173.054</p>
+                </div>
+                <div class="element-item noble-gas nonmetal " data-category="noble-gas">
+                    <h3 class="name">Argon</h3>
+                    <p class="symbol">Ar</p>
+                    <p class="number">18</p>
+                    <p class="weight">39.948</p>
+                </div>
+                <div class="element-item diatomic nonmetal " data-category="diatomic">
+                    <h3 class="name">Nitrogen</h3>
+                    <p class="symbol">N</p>
+                    <p class="number">7</p>
+                    <p class="weight">14.007</p>
+                </div>
+                <div class="element-item actinoid metal inner-transition " data-category="actinoid">
+                    <h3 class="name">Uranium</h3>
+                    <p class="symbol">U</p>
+                    <p class="number">92</p>
+                    <p class="weight">238.029</p>
+                </div>
+                <div class="element-item actinoid metal inner-transition " data-category="actinoid">
+                    <h3 class="name">Plutonium</h3>
+                    <p class="symbol">Pu</p>
+                    <p class="number">94</p>
+                    <p class="weight">(244)</p>
+                </div>
             </div>
 
 
-        </div>
 
+        </div>
 
     </div>
     <!-- /.row -->

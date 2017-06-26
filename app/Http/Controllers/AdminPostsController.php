@@ -7,7 +7,7 @@ use Auth;
 use App\Http\Middleware\isAdmin;
 use App\User;
 
-class PostsController extends Controller
+class AdminPostsController extends Controller
 {
 
     function __construct()
@@ -95,7 +95,10 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post_to_delete = Post::findOrFail($id);
+        $post_to_delete->delete();
+
+        return redirect()->route('admin.blog.index')->with('message', 'The post ' . $post_to_delete->name . ' was successfully deleted!');
     }
 
     public function contact(){

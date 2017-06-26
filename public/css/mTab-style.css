@@ -6,11 +6,12 @@
 .tabNav:after { clear: both; }
 .tabNav { list-style:none; padding:0; margin:0 }
 .tabNav li { float:left; padding:0 }
-.mResTabAccordA { display:inline-block; text-decoration:none; text-transform:uppercase; padding:8px 20px; color:#fff; background-color:#333; }
-.tabNav li.active > .mResTabAccordA, .mResTabAccordA:hover, .mResTabAccordA.active { background-color:#e8381c; color:#fff; text-decoration:none; }
-.tabContainer .tabContent {border:1px solid #ccc; padding:20px; background-color:#efefef; }
+.mResTabAccordA { display:inline-block; text-decoration:none; text-transform:uppercase; padding:8px 20px; color:#fff; }
+.tabNav li.active > .mResTabAccordA, .mResTabAccordA:hover, .mResTabAccordA.active { background-color:#EFEFEF; color:#000000; text-decoration:none; }
+.mResTabAccordA:hover { background-color:#d6d4d4; color:#000000; text-decoration:none; }
+.tabContainer .tabContent {border:0; padding:20px; background-color:#efefef; }
 .tabContainer .tabContent {opacity:0; -webkit-transition: all 500ms ease-in; -moz-transition: all 500ms ease-in; -ms-transition: all 500ms ease-in; -o-transition: all 500ms ease-in; transition: all 500ms ease-in;}
-.tabContainer .tabContent.mTabActive {opacity:1;  display:block; }
+.tabContainer .tabContent.mTabActive {opacity:1;  display:block; min-height:340px;}
 .mResTabbing .mResAccordAnchor { display:none; }
 .mResAccordAnchor { display:block; margin-bottom:1px;  position:relative;}
 .mResAccordAnchor > span { display:block; }

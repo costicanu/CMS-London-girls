@@ -26,9 +26,10 @@ Route::get('contact','PostsController@contact');
 
 Route::resource('admin/users','AdminUsersController');
 Route::resource('admin/girls','AdminGirlsController');
+Route::resource('admin/blog','AdminBlogController');
 Route::get('admin/girls/deleteimage/{id}','AdminGirlsController@deleteimage');
-
-
+Route::get('gallery/{category_url}','HomeController@gallery');
+Route::get('gallery/','HomeController@gallery');
 /*
 ELOQUENT - ORM
 */
