@@ -38,7 +38,7 @@ class HomeController extends Controller
     }
 
     public function gallery($category_url=NULL){
-        echo 'helloo!!!!';
+        return view('frontend.gallery');
     }
 
 }

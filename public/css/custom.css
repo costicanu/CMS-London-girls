@@ -1,3 +1,7 @@
+.container-full-width {
+    width: 100%!important;
+}
+
 .shadow {
     width: 100%;
     height: 168px;
@@ -256,4 +260,39 @@ footer #footer-menu {
 .navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
     color: #666666;
     text-decoration: underline;
+}
+
+.each-girl-masonry{
+    position:relative;
+}
+
+
+.masonry-details{
+    bottom: 10px;
+    left: 0;
+    margin-left: 10px;
+    position: absolute;
+    width: 97%;
+    color:#ffffff;
+    text-align: center;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+
+}
+
+
+.masonry-details-hover{
+
+    background: rgba(0,0,0,0.5);;
+}
+
+.details-to-hide{
+display:none;
+}
+
+.make-visible{
+    display:block;
 }
