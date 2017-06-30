@@ -17,6 +17,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/html5.js')}}"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{URL::asset('css/bootstrap.min.css')}}" rel="stylesheet">
