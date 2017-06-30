@@ -103,12 +103,20 @@
 
 
 @section('after_content')
-    <div class="container container-full-width">
-
+    <div class="container-full-width ccc-background page-description">
         <div class="col-lg-12">
-            <h1 class="page-header">
-                Gallery
-            </h1>
+            <h1>ALLURE International Escorts</h1>
+            <p>
+                Welcome to our gallery of gorgeous girls who are based in mainland Europe and the rest of the World.
+                Our unrivalled selection of escorts and companions are hand selected for their beauty, intelligence and personality, ensuring that which ever lady you choose you can be confident that you are getting the very best escort for you.
+                Full details and rates can be found on each of the girls personal pages.
+                All photos are recent and genuine.
+            </p>
+        </div>
+    </div>
+
+    <div class="container container-full-width">
+        <div class="col-lg-12">
 
             <div id="gallery">
                 <div id="gallery-header">
@@ -128,22 +136,24 @@
                 </div>
                 <div id="gallery-content">
                     <div id="gallery-content-center">
-                        <div class="each-girl-masonry">
-                            <a href="#">
-                                <img src="_assets/studio1.jpg" class="all studio"/>
-                            </a>
-                            <div class="masonry-details">
-                                <div class="girl-name-gallery">Lara</div>
-                                <div class="location-gallery">London</div>
-                                <div class="details-to-hide">
-                                    <div class="girl-age-gallery">23</div>
-                                    <div class="girl-height-gallery">2'22</div>
-                                    <div class="girl-nationality-gallery">asdfs</div>
-                                    <div class="girl-rates-gallery">asdfas</div>
-                                </div>
+                        <a href="#">
+                            <div class="each-girl-masonry">
 
+                                <img src="_assets/studio1.jpg" class="all studio"/>
+
+                                <div class="masonry-details">
+                                    <div class="girl-name-gallery">Lara</div>
+                                    <div class="location-gallery">London</div>
+                                    <div class="details-to-hide">
+                                        <div class="girl-age-gallery">23</div>
+                                        <div class="girl-height-gallery">2'22</div>
+                                        <div class="girl-nationality-gallery">asdfs</div>
+                                        <div class="girl-rates-gallery">asdfas</div>
+                                    </div>
+
+                                </div>
                             </div>
-                        </div>
+                        </a>
 
                         <div class="each-girl-masonry">
 

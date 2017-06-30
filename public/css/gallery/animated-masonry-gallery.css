@@ -63,12 +63,11 @@
 	width: 100%;
 }
 #gallery-header{
-	height: 100px;
+	padding-bottom:30px;
 	width: 100%;
 	float: left;
 }
 #gallery-header-center{
-	height: 100px;
 	width: 100%;
 	margin-right: auto;
 	margin-left: auto;
@@ -104,8 +103,8 @@
 	margin-left: 20px;
 }
 #gallery-header-center-right{
-	float: right;
-	height: 35px;
+	float: left;
+	clear:both;
 	margin-top: 32px;
 	line-height: 35px;
 }
