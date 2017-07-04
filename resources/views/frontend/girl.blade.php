@@ -27,7 +27,7 @@
                 backgroundRepeat: "repeat-x",
                 showDisplay2DAlways: "no",
                 coverflowStartPosition: "center",
-                numberOfThumbnailsToDisplayLeftAndRight: "2",
+                numberOfThumbnailsToDisplayLeftAndRight: "1",
                 slideshowDelay: 3000,
                 autoplay: "yes",
                 showPrevButton: "yes",
