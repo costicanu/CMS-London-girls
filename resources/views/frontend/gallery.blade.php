@@ -66,12 +66,12 @@
             <div id="filter-bar" class="container text-center">
                 <ul id="portfolio-filters" class="nav category-option-set" data-option-key="filter">
                     <li class="active"><a href="#" data-filter="*">Show all</a></li>
-                    <li><a href="#" data-filter=".Design">Design</a></li>
-                    <li><a href="#" data-filter=".Identity">Identity</a></li>
-                    <li><a href="#" data-filter=".Illustrations">Illustrations</a></li>
-                    <li><a href="#" data-filter=".Misc">Misc</a></li>
-                    <li><a href="#" data-filter=".Typography">Typography</a></li>
-                    <li><a href="#" data-filter=".Web_Design">Web Design</a></li>
+                    <li><a href="#" data-filter=".Design">London</a></li>
+                    <li><a href="#" data-filter=".Identity">Manchester</a></li>
+                    <li><a href="#" data-filter=".Illustrations">San Marino</a></li>
+                    <li><a href="#" data-filter=".Misc">Luton</a></li>
+                    <li><a href="#" data-filter=".Typography">York</a></li>
+                    <li><a href="#" data-filter=".Web_Design">Norwich</a></li>
                 </ul>
             </div>
 
@@ -130,7 +130,7 @@
                                         <div class="layer-container">
                                             <div class="description-title">
                                                 <div class="portfolio-header"><a
-                                                            href="http://sanat.theme-cafe.com/portfolio/portfolio29/">Portfolio29</a>
+                                                            href="http://sanat.theme-cafe.com/portfolio/portfolio29/">Gabrielle</a>
                                                     <br /><span class="hover-location">
                                                     London Bridge
                                                 </span>

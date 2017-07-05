@@ -316,3 +316,30 @@ overflow: hidden;
 .ccc-background{
     background-color:#CCCCCC;
 }
+
+.portfolio-inner-container{
+    padding-left:0;
+    padding-right:0;
+}
+
+#portfolio-filters {
+    padding: 15px 10px;
+}
+
+#portfolio-filters > li > a::after {
+    color: #2d2d2d;
+    content: "|";
+    padding: 0 10px;
+}
+
+#portfolio-filters > li {
+display: inline-block;
+}
+
+ul#portfolio-filters li a{
+    padding: 0;
+}
+
+.wp-post-image{
+    border: 4px solid #666666;
+}
